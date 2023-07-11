@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on juppytt&#39;s blog</title>
+    <link>/</link>
+    <description>Recent content in Home on juppytt&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Archive</title>
+      <link>/archive/</link>
+      <pubDate>Fri, 30 Jun 2023 15:20:45 +0900</pubDate>
+      
+      <guid>/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security-hardening ARM64 Linux kernel</title>
+      <link>/posts/linux-arm64-hardening/</link>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/linux-arm64-hardening/</guid>
+      <description>Intro In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting security-critical objects and pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features (PAC and MTE).
+Building such a kernel hardening system required me to tackle several key issues:
+Cross-compiling the kernel (X86 -&amp;gt; ARM64) Cross-module kernel analysis Linux kernel instrumentation Connecting the cross-module analysis with kernel build system.</description>
+    </item>
+    
+    <item>
+      <title>Categories</title>
+      <link>/categories/</link>
+      <pubDate>Fri, 30 Jun 2023 15:20:45 +0900</pubDate>
+      
+      <guid>/categories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graduate Life</title>
+      <link>/categories/graduate-life/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/graduate-life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>/categories/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/search/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

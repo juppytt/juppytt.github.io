@@ -1,0 +1,85 @@
+.sidebar .widget-about .logo {
+    margin-bottom: 0em;
+}
+
+.sidebar {
+  padding: 2.5em 0;
+}
+
+.widget-about .site-title {
+  margin-bottom: 0.3em;
+}
+
+.widget.sep-after:after {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+svg:hover,  a:hover{
+  transition: color 0.3s ease-in-out;
+  color: #21D4C2;
+}
+
+.categories-archive {
+  .list {
+    .item {
+      padding-left: 1em;
+      .meta {
+        flex: 0 0 3.5em;
+      }
+    }
+  }
+}
+
+.categories-group {
+  &.sep-after {
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
+
+.cat-cloud-name {
+  display: inline-block;
+  font-size: 1.25em;
+  line-height: 2em;
+}
+
+.cat-cloud-count {
+  display: inline-block;
+  font-size: 0.75em;
+  line-height: 2em;
+  margin-left: 0.5em;
+  color: #999;
+}
+
+.cat-cloud-description {
+  font-size: 0.75em;
+  line-height: 1.5em;
+}
+
+.desc {
+  font-style: normal;
+}
+/* input, optgroup, select, textarea {
+  font-size: 90%;
+  line-height: 1;
+  margin: 1em;
+} */
+
+
+/* .menu a,
+.sub-menu-toggler,
+.sidebar-toggler span,
+.widget-social_menu a:focus {
+  color: #21D4C2;
+} */
+/* .menu a,
+.sub-menu-toggler,
+.sidebar-toggler span,
+.widget-social_menu a:hover {
+  color: #21D4C2;
+} */
+
