@@ -3,13 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/archive/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/hugging-face/</loc>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/research/</loc>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/huggingface-space-isolation/</loc>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-07-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/kernel/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
@@ -17,19 +32,10 @@
     <loc>/tags/llvm/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/qemu/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/research/</loc>
-    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/linux-arm64-hardening/</loc>
-    <lastmod>2023-07-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>

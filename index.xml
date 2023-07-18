@@ -6,7 +6,7 @@
     <description>Recent content in Home on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Archive</title>
       <link>/archive/</link>
@@ -14,6 +14,16 @@
       
       <guid>/archive/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Security Risks in Hugging Face Spaces</title>
+      <link>/posts/huggingface-space-isolation/</link>
+      <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/huggingface-space-isolation/</guid>
+      <description>Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
+Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.</description>
     </item>
     
     <item>

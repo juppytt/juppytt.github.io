@@ -134,6 +134,8 @@ Cross-compiling the kernel (X86 -&gt; ARM64) Cross-module kernel analysis Linux 
 
   <div class='container list-container'>
   <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/hugging-face/' style='font-size:1em'>Hugging Face</a>
+      </li><li>
         <a href='/tags/kernel/' style='font-size:1em'>kernel</a>
       </li><li>
         <a href='/tags/llvm/' style='font-size:1em'>LLVM</a>
@@ -241,21 +243,6 @@ Cross-compiling the kernel (X86 -&gt; ARM64) Cross-module kernel analysis Linux 
 
   
   
-<span class='reading-time'><svg
-  class="icon"
-  xmlns="http://www.w3.org/2000/svg"
-  viewbox="0 0 24 24"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-  stroke-width="2"
-  aria-hidden="true"
-><circle cx="12" cy="12" r="10" />
-<polyline points="12 6 12 12 15 15" />
-</svg>
-6 mins read
-</span>
-
-
 </div>
 
 
@@ -350,9 +337,9 @@ However, the kernel build system uses <code>CC</code> (<code>clang</code>) and <
 to build the kernel, instead of <code>opt</code>.</p>
 <p>One approach is <code>-Xclang</code> option to pass the instrumentation pass as
 a Clang pass plugin. However, for some technical reasons that I
-cannot recall precisely, I did not choose this approach. It may have
+cannot recall precisely, I did not choose this approach. I may have
 been due to uncertainty regarding whether every module would be built
-with the instrumentation pass.</p>
+with the instrumentation by <code>-Xclang</code>.</p>
 <p>Another approach that I took is to implement the instrumentation pass
 as a sanitizer, which is well-supported by both Linux and clang with
 <code>-fsanitize=&lt;sanitizer-name&gt;</code> option. Sanitizers are implemented as
@@ -384,18 +371,18 @@ instrumentation would be ideal. However, the kernel, as most C/C++
 projects do, builds each module separately and links them together,
 which makes it difficult to perform cross-module analysis during
 kernel build.</p>
-<p>To address this, I came up with a two-pass approach: One pass is for
-cross-module analysis that extracts the list of instructions from a
-pre-compiled whole-kernel bitcode (<code>vmlinux.bc</code>). Another is for
+<p>To address this this, I came up with a two-pass approach: One pass is
+for cross-module analysis that extracts the list of instructions from
+a pre-compiled whole-kernel bitcode (<code>vmlinux.bc</code>). Another is for
 instrumentation that is applied to each module to perform
 instrumentation for the previous identified instructions.</p>
 <p>This requires a way to share the list of instructions between the two
 LLVM passes. Here, I simply used a simple text file containing raw
 dump of instructions in LLVM IR format. Each instruction is
-accompanied by minimal metadata such as function name and the
-instruction&rsquo;s order in the function to accurately specify the
-intended instruction. While this method works, I believe there are
-more elegant ways to share the instructions between two passes.</p>
+accompanied by minimal metadata such as function name and
+instruction in order to accurately specify the intended instruction.
+While ths method works, I believe there are more elegant ways to
+share the instructions between two passes.</p>
 <p>Additionally, to avoid generating an excessively large file by
 dumping every instruction that need to be instrumented, a simple
 filter in the analysis pass excludes dumping instructions if they
@@ -426,7 +413,7 @@ aarch64-none-linux-gnu-gdb.</p>
 <p>To build the kernel for Raspberry Pi, I used the official Raspberry
 Pi <a href="https://github.com/raspberrypi/firmware/tree/master">firmware</a>
 for the boot files and modules. The following script builds and
-prepares the boot files and modules of the instrumented kernel:</p>
+prepare the boot files and modules for the instrumented kernel:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash -ve
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>PROJ_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>
 </span></span><span style="display:flex;"><span>LLVM_BUILD<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>PROJ_DIR<span style="color:#e6db74">}</span>/build/bin
@@ -489,7 +476,7 @@ helpful for others facing similar issues.</p>
   aria-hidden="true"
 ><path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z" />
 </svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/research/'>research</a></div>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/research/'>Research</a></div>
 <div class='tags'><svg
   class="icon"
   xmlns="http://www.w3.org/2000/svg"
@@ -509,10 +496,29 @@ helpful for others facing similar issues.</p>
 
 </article>
 
+<nav class='entry-nav'>
+  <div class='container'><div class='next-entry sep-before'>
+      <a href='/posts/huggingface-space-isolation/'>
+        <span class='screen-reader-text'>Next post: </span>Security Risks in Hugging Face Spaces<span aria-hidden='true'>Next <svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="4" y1="12" x2="20" y2="12" />
+<polyline points="14 6 20 12 14 18" />
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
 
 
 
-      </main>
+
+    </main>
 
       <footer id='footer' class='footer'>
         <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>

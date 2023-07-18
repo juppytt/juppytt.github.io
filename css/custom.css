@@ -63,6 +63,14 @@ svg:hover,  a:hover{
 .desc {
   font-style: normal;
 }
+
+em {
+  color: #339996;
+}
+
+.img {
+  text-align: center;
+}
 /* input, optgroup, select, textarea {
   font-size: 90%;
   line-height: 1;
