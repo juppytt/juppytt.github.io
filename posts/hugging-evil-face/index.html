@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
+Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.'>
+<meta name='theme-color' content='#21D4C2'>
+
+<meta property='og:title' content='Hugging (Evil) Face: Security issues in Hugging Face • juppytt&#39;s blog'>
+<meta property='og:description' content='Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
+Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.'>
+<meta property='og:url' content='/posts/hugging-evil-face/'>
+<meta property='og:site_name' content='juppytt&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Hugging Face'><meta property='article:published_time' content='2023-07-19T00:00:00Z'/><meta property='article:modified_time' content='2023-07-19T00:00:00Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.102.3" />
+
+  <title>Hugging (Evil) Face: Security issues in Hugging Face • juppytt&#39;s blog</title>
+  <link rel='canonical' href='/posts/hugging-evil-face/'>
+  
+  
+  <link rel='icon' href='/fav.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#21D4C2;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about widget-social_menu sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/1024.png'>
+      </a>
+    </div>
+    
+
+    
+    <h2 class='title site-title '>
+      <a href='/' style="color:var(--color-accent)">
+      juppytt&#39;s blog
+      </a>
+    </h2>
+    <div class='desc'>By Juhee Kim</div><nav aria-label='Social Menu'>
+      <ul><li>
+          <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+        </li><li>
+          <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+        </li></ul>
+    </nav>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/'>Home</a></li><li class='item'>
+  <a href='/archive/'>Archive</a></li><li class='item has-children'>
+  <a href='/categories/'>Categories</a><button class='sub-menu-toggler'>
+    <span class='screen-reader-text'>expand sub menu</span>
+    <span class='sign'></span>
+  </button>
+
+  <ul class='sub-menu'><li class='item'>
+  <a href='/categories/graduate-life/'>graduate life</a></li><li class='item'>
+  <a href='/categories/research/'>research</a></li></ul></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/hugging-face/' style='font-size:1em'>Hugging Face</a>
+      </li><li>
+        <a href='/tags/kernel/' style='font-size:1em'>kernel</a>
+      </li><li>
+        <a href='/tags/llvm/' style='font-size:1em'>LLVM</a>
+      </li><li>
+        <a href='/tags/qemu/' style='font-size:1em'>QEMU</a>
+      </li></ul>
+</div>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Home</a></li><li><a href='/posts/'>Posts</a></li><li><span>Hugging (Evil) Face: Security issues in Hugging Face</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>juppytt&#39;s blog</p><p class='desc site-desc'>Writings on Security Research and Graduate Life</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Hugging (Evil) Face: Security issues in Hugging Face</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2023-07-19T00:00:00Z'>2023, Jul 19</time>
+</span>
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <figure class="img"><img src="/images/devil-hugging-face.png" width="30%"/>
+</figure>
+
+<h3 id="introduction">Introduction</h3>
+<p>In recent years, emerging technology in Machine Learning and Large
+Language Model (LLM) had led to the development of ML/LLM-powered
+applications. One of the popular service for ML/LLM application is
+<a href="https://huggingface.co/">Hugging Face</a>. In this post, I would like
+to describe the potential security risks in current Hugging Face,
+especially in <a href="https://huggingface.co/spaces">Spaces</a>.</p>
+<h3 id="hugging-face">Hugging Face</h3>
+<p><a href="https://huggingface.co/">Hugging Face</a> is a AI community that
+provides a lot of machine learning models, datasets, and
+applications. Users can contribute their own models, datasets, and
+demo applications (i.e., Spaces) to the community. This community has
+been growing rapidly since the advent of the transformer model.</p>
+<p>Specifically, <a href="https://huggingface.co/spaces"><em>Spaces</em></a> offers a
+easy-to-user environment to manage and host demo applications for
+models. Users can upload and deploy Spaces, which is then served as
+MLaaS (Machine Learning as a Service) from Hugging Face&rsquo;s server.
+Spaces support various interface SDKs (Gradio, Streamlit) and
+execution environment options with various GPU accelerators.</p>
+<h3 id="security-risks-on-spaces">Security Risks on Spaces</h3>
+<p>Despite its usability, Spaces incorporates several vulnerable
+designs, which may potentially lead to security issues.</p>
+<h4 id="vuln-design-1-unrestricted-app-logics">Vuln. Design 1: Unrestricted App Logics</h4>
+<p>First, Spaces allow users to upload and distribute any kind of apps.
+This unrestricted deployment introduces potential unsafe data-flows
+between the user and the app (or the execution environment).
+Specifically, <em>arbitrary code execution</em> and <em>information leakage</em>.</p>
+<h4 id="issue-1-arbitrary-code-execution">Issue 1: Arbitrary Code Execution</h4>
+<p>By its nature, Spaces allow <a href="TODO">arbitrary code execution</a> from app
+developers to Hugging Face server. Developers can run any app on
+Hugging Face&rsquo;s server just by uploading the app to Spaces. Moreover,
+if the app contains data-flows from user input to executable data
+(e.g., user-provided functions or shell commands), it would allow
+arbitrary code executions <em>from app users to the server</em>. If the app
+is publicly available, the arbitrary code execution functionality
+would be exposed to unspecified and anonymous users.</p>
+<p>With proper containerization, the effect of arbitrary code execution
+is limited to the sandboxed environment. However, if a container
+escape vulnerability might allow the attacker to attempt container
+escape attack, which would further enable attacks on the host server.</p>
+<p>Arbitrary code execution also allows attackers to change app&rsquo;s
+behavior or hijack the goal. One example is bypassing any security
+measurement (e.g., safeguard prompts, throughput). With arbitrary
+execution, the attackers can delete or replace the safeguard prompts
+passed to the model, or they can nullify the restrictions on users
+such as throughput.</p>
+<p>Another example is replacing the model used by the app with different
+model (e.g., backdoor-injected model, model for different tasks).
+Considering high-end GPU acceleration environment charge extra costs
+for the app developer, such attempts might also yield financial loss.</p>
+<h5 id="real-world-example">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/juppytt/shell">shell</a> is a simple app
+that takes user input and passes it to a langchain tool called
+<code>ShellTool</code>, which runs the input as a shell command. By sending
+commands, users can explore or manipulate the execution environment.
+For instance, sending <code>ls</code> as the command input would return the
+actual file in the containerized environment.</p>
+<figure class="img"><img src="/images/code-exec-1.png"
+         alt="arbitrary shell command execution in Hugging Face Spaces" width="80%"/><figcaption>
+            <p><em>arbitrary shell command execution in Hugging Face Spaces</em></p>
+        </figcaption>
+</figure>
+
+<h4 id="issue-2-information-leakage-between-app-and-user">Issue 2: Information Leakage between App and User</h4>
+<p>Many apps in Spaces operate with numerous user-provided sensitive
+data. Apps require user credentials (e.g., API keys, ID, password) as
+a delegate for API uses. Apps require personal information (e.g.,
+name, email, location) to provide customized services. When
+processing such data, apps should be safely designed to protect
+personal information. Recent privacy regulations (e.g.,
+<a href="https://gdpr.eu/tag/chapter-3/">GDPR</a>,
+<a href="https://oag.ca.gov/privacy/ccpa">CCPA</a>) consider any user-provided
+input passed to web apps as sensitive data and enforces that appsq
+should not store nor track such data without user content.</p>
+<p>Lacking restriction on app internal logics may allow dataflow from the users to untrusted channels. When user data is
+passed to an app, the app should carefully process the data for the
+intended operations only. However, as Spaces allow any apps with any
+logic to be deployed, we cannot assure whether the apps are properly
+handling user data.</p>
+<h5 id="real-world-example-1">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/jeevavijay10/nlp-goemotions-senti-pred">nlp-goemotions-senti-pred</a>
+is a demo app for a sentiment prediction model, which allows user to
+input text and receive sentiment predictions from the model. For
+instance, if a user inputs &ldquo;I trust you&rdquo;, the app will return
+&ldquo;agreement&rdquo; as the predicted sentiment.</p>
+<figure class="img"><img src="/images/app-leak-1.png"
+         alt="nlp-goemotions-senti-pred predicts sentiment from input sentence"/><figcaption>
+            <p><em>nlp-goemotions-senti-pred predicts sentiment from input sentence</em></p>
+        </figcaption>
+</figure>
+
+<p>However, there is a hidden functionality in this app that logs every
+user input and updates it to a public Huggingface dataset maintained
+by the app-developer. Consequently, every text provided by users is
+leaked and publicly exposed. The app does not inform users about this
+background activity, leaving them unaware of their data being logged
+into a dataset.</p>
+<figure class="img"><img src="/images/app-leak-2.png"
+         alt="User input is silently logged into another dataset"/><figcaption>
+            <p><em>User input is silently logged into another dataset</em></p>
+        </figcaption>
+</figure>
+
+<h4 id="vuln-design-2-missing-isolation-between-requests">Vuln. Design 2: Missing Isolation between Requests</h4>
+<p>Another vulnerable design in Spaces is the lack of sufficient
+isolation between user requests. Currently, Spaces uses a single
+container when running an app. Therefore, every request made to the
+app, regardless of the sender, is executed within the same container
+environment. This can lead to unsafe data-flows between users, such
+as information leakage.</p>
+<h5 id="issue-3-information-leakage-between-users">Issue 3: Information Leakage between Users</h5>
+<p>As Spaces provide a single container per app, it is crucial to ensure
+that user data is not shared between requests. If an app has a
+data-flow that stores user input to global states and then loads
+those global states into user-visible outputs, the app becomes
+vulnerable to user information leakage.</p>
+<p>To illustrate this vulnerability, let&rsquo;s take an example using
+<a href="https://huggingface.co/spaces/juppytt/shell">shell</a>. If a user
+executes the command <code>echo &quot;12345&quot; &gt; file &amp;&amp; ls</code>, the app will create
+a file named <code>file</code> with <code>12345</code> and list the existing files in the
+current directory.</p>
+<figure class="img"><img src="/images/user-leak-1.png"
+         alt="Spaces allow apps to store user data as a global state (e.g., file)" width="90%"/><figcaption>
+            <p><em>Spaces allow apps to store user data as a global state (e.g., file)</em></p>
+        </figcaption>
+</figure>
+
+<p>Then, another user can access the file by sending commands. An
+arbitrary user can read <code>file</code> by passing <code>cat file</code> to the app, thus
+leaking the data provided by the previous user.</p>
+<figure class="img"><img src="/images/user-leak-3.png"
+         alt="Sharing a container between requests allows users to leak other users&amp;rsquo; data" width="90%"/><figcaption>
+            <p><em>Sharing a container between requests allows users to leak other users&rsquo; data</em></p>
+        </figcaption>
+</figure>
+
+<h5 id="real-world-example-2">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/awacke1/CB-GR-Chatbot-Blenderbot">Chatbot-Blenderbot</a>
+is a chat bot app that, upon receiving a user request, runs a model
+and saves every user input and model response to a file. The entire
+file, including inputs from other users, is then displayed to the
+user. However, this app does not notify users that their input will
+be logged and exposed to other users. Users only become aware that
+their input is being shared with others after they have already sent
+their data to the app.</p>
+<figure class="img"><img src="/images/user-leak-4.png"
+         alt="Chatbot-Blenderbot exposes every input from different users without user consent"/><figcaption>
+            <p><em>Chatbot-Blenderbot exposes every input from different users without user consent</em></p>
+        </figcaption>
+</figure>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>I reported these issues to Hugging Face security team through email
+and <a href="https://discuss.huggingface.co/t/per-user-isolation-in-spaces/43369">Hugging Face
+forum</a>.
+They didn&rsquo;t replied the email but did show interest in addressing the
+issues through the forum. Unfortunately, they have not yet provided
+any working solutions or mitigation measures.</p>
+<p>As we are in the initial stage of ML/LLM app development, there are
+several security vulnerabilities similar to those commonly studied in
+non-ML programs. One good news is that current ML/LLM apps are mostly
+for performing simple tasks like text/image transformation or chatbot
+functionalities, which are less prone to severe security
+vulnerabilities. Nonetheless, as this field continues to develop
+rapidly, applications will become complex, and a wide range of
+security issues are likely to emerge.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z" />
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/research/'>Research</a></div>
+<div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/hugging-face/'>Hugging Face</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/linux-arm64-hardening/'>
+        <span aria-hidden='true'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="20" y1="12" x2="4" y2="12" />
+<polyline points="10 18 4 12 10 6" />
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Security-hardening ARM64 Linux kernel</a>
+    </div></div>
+</nav>
+
+
+
+
+    </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2023 Juhee Kim </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+
