@@ -4,58 +4,100 @@
   <url>
     <loc>/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/archive/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/posts/hugging-evil-face/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/hugging-face/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/posts/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/categories/research/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/kernel/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/llvm/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/qemu/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/posts/linux-arm64-hardening/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/page/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/authors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/config/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/categories/graduate-life/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/tags/og/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/categories/research/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/search/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>/series/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
