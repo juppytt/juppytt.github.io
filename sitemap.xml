@@ -2,101 +2,101 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>https://juppytt.github.io/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/archive/</loc>
+    <loc>https://juppytt.github.io/archive/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://juppytt.github.io/categories/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/posts/hugging-evil-face/</loc>
+    <loc>https://juppytt.github.io/posts/hugging-evil-face/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/hugging-face/</loc>
+    <loc>https://juppytt.github.io/tags/hugging-face/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>https://juppytt.github.io/posts/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/categories/research/</loc>
+    <loc>https://juppytt.github.io/categories/research/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://juppytt.github.io/tags/</loc>
     <lastmod>2023-07-19T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/kernel/</loc>
+    <loc>https://juppytt.github.io/tags/kernel/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/llvm/</loc>
+    <loc>https://juppytt.github.io/tags/llvm/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/qemu/</loc>
+    <loc>https://juppytt.github.io/tags/qemu/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/posts/linux-arm64-hardening/</loc>
+    <loc>https://juppytt.github.io/posts/linux-arm64-hardening/</loc>
     <lastmod>2023-07-09T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://juppytt.github.io/categories/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/page/</loc>
+    <loc>https://juppytt.github.io/page/</loc>
     <lastmod>2023-06-30T15:20:45+09:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/authors/</loc>
+    <loc>https://juppytt.github.io/authors/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/config/</loc>
+    <loc>https://juppytt.github.io/tags/config/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/categories/graduate-life/</loc>
+    <loc>https://juppytt.github.io/categories/graduate-life/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/tags/og/</loc>
+    <loc>https://juppytt.github.io/tags/og/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/categories/research/</loc>
+    <loc>https://juppytt.github.io/categories/research/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/search/</loc>
+    <loc>https://juppytt.github.io/search/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>/series/</loc>
+    <loc>https://juppytt.github.io/series/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

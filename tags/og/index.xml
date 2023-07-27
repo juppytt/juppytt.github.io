@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Opengraph on juppytt&#39;s blog</title>
-    <link>/tags/og/</link>
+    <link>https://juppytt.github.io/tags/og/</link>
     <description>Recent content in Opengraph on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/tags/og/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://juppytt.github.io/tags/og/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
