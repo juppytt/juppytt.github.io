@@ -6,7 +6,7 @@
     <description>Recent content in Home on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2023 22:37:51 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Archive</title>
       <link>https://juppytt.github.io/archive/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://juppytt.github.io/archive/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>A review of 2023: Surprises, Triumphs, and Failures</title>
+      <link>https://juppytt.github.io/posts/2023-review/</link>
+      <pubDate>Sun, 31 Dec 2023 22:37:51 +0900</pubDate>
+      
+      <guid>https://juppytt.github.io/posts/2023-review/</guid>
+      <description>It&amp;rsquo;s the end of 2023, and as I look back on the year, I can only say that it was a year full of research. I remember the days spent in front of the computer, reading papers, and conducting experiments. Of course, there were other events this year, including the creation of this blog (yay!). So, I decided it would be nice to write a review of 2023, to reflect on this year and to prepare for the next year.</description>
     </item>
     
     <item>
