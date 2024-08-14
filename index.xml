@@ -6,7 +6,7 @@
     <description>Recent content in Home on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2023 22:37:51 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Aug 2024 10:45:43 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Archive</title>
       <link>https://juppytt.github.io/archive/</link>
@@ -14,6 +14,16 @@
       
       <guid>https://juppytt.github.io/archive/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Black Hat USA 2024</title>
+      <link>https://juppytt.github.io/posts/bhusa24/</link>
+      <pubDate>Wed, 14 Aug 2024 10:45:43 +0900</pubDate>
+      
+      <guid>https://juppytt.github.io/posts/bhusa24/</guid>
+      <description>From August 5th to 11th 2024, I attended Black Hat USA 2024 (and Defcon 2024) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.
+Black Hat USA 2024 First Black Hat experience I&amp;rsquo;ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference.</description>
     </item>
     
     <item>

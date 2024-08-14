@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='From August 5th to 11th 2024, I attended Black Hat USA 2024 (and Defcon 2024) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.
+Black Hat USA 2024 First Black Hat experience I&rsquo;ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference.'>
+<meta name='theme-color' content='#21D4C2'>
+
+<meta property='og:title' content='Black Hat USA 2024 • juppytt&#39;s blog'>
+<meta property='og:description' content='From August 5th to 11th 2024, I attended Black Hat USA 2024 (and Defcon 2024) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.
+Black Hat USA 2024 First Black Hat experience I&rsquo;ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference.'>
+<meta property='og:url' content='https://juppytt.github.io/posts/bhusa24/'>
+<meta property='og:site_name' content='juppytt&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='MTE'><meta property='article:tag' content='BlackHat'><meta property='article:published_time' content='2024-08-14T10:45:43&#43;09:00'/><meta property='article:modified_time' content='2024-08-14T10:45:43&#43;09:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.102.3" />
+
+  <title>Black Hat USA 2024 • juppytt&#39;s blog</title>
+  <link rel='canonical' href='https://juppytt.github.io/posts/bhusa24/'>
+  
+  
+  <link rel='icon' href='/fav.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#21D4C2;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about widget-social_menu sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/1024.png'>
+      </a>
+    </div>
+    
+
+    
+    <h2 class='title site-title '>
+      <a href='/' style="color:var(--color-accent)">
+      juppytt&#39;s blog
+      </a>
+    </h2>
+    <div class='desc'>By Juhee Kim</div><nav aria-label='Social Menu'>
+      <ul><li>
+          <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+        </li><li>
+          <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+        </li></ul>
+    </nav>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/'>Home</a></li><li class='item'>
+  <a href='/archive/'>Archive</a></li><li class='item has-children'>
+  <a href='/categories/'>Categories</a><button class='sub-menu-toggler'>
+    <span class='screen-reader-text'>expand sub menu</span>
+    <span class='sign'></span>
+  </button>
+
+  <ul class='sub-menu'><li class='item'>
+  <a href='/categories/graduate-life/'>graduate life</a></li><li class='item'>
+  <a href='/categories/research/'>research</a></li></ul></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/blackhat/' style='font-size:1em'>BlackHat</a>
+      </li><li>
+        <a href='/tags/hugging-face/' style='font-size:1em'>Hugging Face</a>
+      </li><li>
+        <a href='/tags/kernel/' style='font-size:1em'>kernel</a>
+      </li><li>
+        <a href='/tags/llvm/' style='font-size:1em'>LLVM</a>
+      </li><li>
+        <a href='/tags/mte/' style='font-size:1em'>MTE</a>
+      </li><li>
+        <a href='/tags/productivity/' style='font-size:1em'>productivity</a>
+      </li><li>
+        <a href='/tags/qemu/' style='font-size:1em'>QEMU</a>
+      </li></ul>
+</div>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Home</a></li><li><a href='/posts/'>Posts</a></li><li><span>Black Hat USA 2024</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>juppytt&#39;s blog</p><p class='desc site-desc'>Writings on Security Research and Graduate Life</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Black Hat USA 2024</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2024-08-14T10:45:43&#43;09:00'>2024, Aug 14</time>
+</span>
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>From August 5th to 11th 2024, I attended Black Hat USA 2024 (and
+Defcon 2024) in Las Vegas. I presented my research on <a href="https://www.blackhat.com/us-24/briefings/schedule/#bypassing-arms-memory-tagging-extension-with-a-side-channel-attack-38669">Bypassing MTE
+with a side-channel
+attack</a>.
+I returned to Korea this morning (luckily, no jet lag) and am writing
+this post to share my experiences from Las Vegas before I forget them.</p>
+<h1 id="black-hat-usa-2024">Black Hat USA 2024</h1>
+<h2 id="first-black-hat-experience">First Black Hat experience</h2>
+<p>I&rsquo;ve never been to Black Hat before, so I was very excited, especially
+since I was going to present for the first time in an international
+conference. There were lots of people, great talks, and free food and
+drinks 💙. Some gifts were also given: a Black Hat
+backpack, which I found very practical and useful, a tumblr with a
+straw, and a badge.</p>
+<p>I also attended the speaker VIP party prior to the conference, where I
+had the chance to meet many researchers and security experts in
+person. It was so exciting to meet professionals I&rsquo;ve only seen in
+papers.</p>
+<p>For the sake of networking, I did try to connect with others, and I
+think it was quite successful. Since English is not my first language,
+it&rsquo;s always challenging to communicate at such parties, but I was
+fairly able to communicate with others (shoutout to all my online
+English tutors!). However, I still feel like I need to expand my
+vocabulary to express my thoughts more clearly.</p>
+<p>Regarding the venue, it was huge, so I had to walk a lot. I was
+exhausted every day because I only brought shoes with hard soles. I
+should have brought more comfortable shoes for walking. The business
+hall had many company booths where I could get free t-shirts and
+other company swags. I wanted to visit more booths but couldn&rsquo;t being
+busy with my talk and other things.</p>
+<p>Despite the venue&rsquo;s size, the briefing sessions weren&rsquo;t as crowded as
+I expected. I&rsquo;ve heard that the briefings were usually packed (abot
+10 years ago), but the session halls had plenty of empty seats. I&rsquo;ve
+only saw people lining up once, for the &ldquo;15 ways to Break your
+Copilot&rdquo; talk, which was quite interesting (does everyone want to
+break Copilot?). But most talks weren&rsquo;t even half full.</p>
+<p>Among the 5-6 talks I attended, some were really interesting and tackled
+the specific subjects I&rsquo;m working on at the moment. It assured me that
+I was doing relevant research, but it also made me think I need to
+push our projects harder to complete them before someone else does
+😵‍💫.</p>
+<p>I found LLM security talk by Richard Harang (Nvidia) very fascinating.
+Not only was the content excellent, but the way he presented was also
+very engaging.</p>
+<h2 id="my-talk">My talk</h2>
+<p>As a first-time speaker, I was quite nervous about my talk,
+especially since Black Hat is a non-academic conference with a large
+and diverse audience. Before the conference, my advisor and I had
+many discussions about the content and visuals to make it easy to
+follow for the general audience. We also had multiple rounds of
+rehearsals.</p>
+<p>At the conference, before my talk, I had a scheduled interview with
+Dark Reading. I expected to be a simple, brief session that would be
+published as an article later. But it turned out to be a news
+desk-style live interview with a camera crew! I was so nervous because
+I didn&rsquo;t expect it to be <em>live</em>, and I hadn&rsquo;t prepared for that at
+all. It was the most overwhelming experience I had on this trip. Well,
+I think I did my best, staying calm and answering the questions
+somehow&hellip; 😅</p>
+<p>On the day of the presentation, I felt quite confident&ndash;maybe because
+I had practiced a lot and had already gone through the anxiety of the
+live interview. I was also kind of tired of being nervous since my
+talk was scheduled at the afternoon of the last day. So I thought,
+&ldquo;I don&rsquo;t care anymore. I just want to finish this.&rdquo;</p>
+<p>The talk went successful. I think I even enjoyed the feeling of being
+on stage and having the audience&rsquo;s attention (?!). The audience seemed
+engaged in my talk (no one appeared to be dozing off or leaving the
+hall). Some gave me positive feedback afterward, which I greatly
+appreciated and made me feel all the effort was worth it. I received
+many questions as well and was genuinely happy to see that my research
+was interesting to many people.</p>
+<p>Overall, I really enjoyed presenting at Black Hat USA and highly
+recommend it. I loved the feeling of being on stage and all the
+speaker privileges from BlackHat. I definitely want to present at
+Black Hat again!</p>
+<h1 id="other-experiences">Other experiences</h1>
+<p>A few other things I did during the trip.</p>
+<h2 id="google-0x0g-party">Google 0x0g party</h2>
+<p>During this trip, I attended the Google 0x0g party (Google
+Vulnerability Reward Program party). It was my first time attending
+such an event, and there were so many security engineers from Google
+and various companies. The party featured programs with talks and
+events, but it was mainly about networking and socializing. I got to
+meet people around the industry, and overall, it was a great
+experience.</p>
+<p>Since I had given my talk about bypassing MTE the day before, I had
+some conversations about MTE. Opinions on MTE were quite divided
+across the industry, even within Google. Some were very positive about
+MTE, while others are quite negative, with some suggesting that MTE
+could be deprecated (?). This was interesging to me because, in
+academia, particularly in systems security, MTE is generally
+considered as a promising direction for future security, as long as
+the cost is not too high. The cost is indeed a significant issue, but
+the Pixel 8 series has proven that <a href="https://googleprojectzero.blogspot.com/2023/11/first-handset-with-mte-on-market.html">MTE&rsquo;s performance overhead is
+negligible</a>.
+I also have a paper under review that leverages MTE for a attack
+mitigation, and it has unfortunately gone through the review process
+at top-tier security conferences about 4-5 times, with no reviewer
+raising concerns about the feasibility of MTE as a security mechanism.</p>
+<p>Another interesting thing I picked up, not only from this party but
+also from other people I&rsquo;ve met in the past, is that high-end IOT
+device manufacturers are generally more positive about MTE. I&rsquo;ve heard
+that Amazon is considering MTE for their future devices, and I also
+learned at this event that Meta is considering MTE for future Oculus
+devices. I wonder if this is because they are less concerned about the
+performance or other costs? In any case, it seems our research on MTE
+is still highly relevant to the industry, and I&rsquo;m excited to see how
+it will be adopted in the future.</p>
+<h2 id="defcon-2024">Defcon 2024</h2>
+<p>Defcon felt a lot less organized than BlackHat. As a non-CTF player, I
+didn&rsquo;t find much to do at Defcon. I mostly wandered around some of the
+villages and attended a talk about bypassing Copilot (again, by a
+different speaker). Then I spent some time at the Car Hacking Village,
+where my advisor was participating in the CTF 😄. I just
+watched him play and worked on my own stuff. By that point, I didn&rsquo;t
+have much social energy left, so I tried to focus on getting back to
+my research.</p>
+<p>I also attended the AIxCC closing ceremony, where the winners of the
+AIxCC competition were announced. I heard the competition was quite
+intense, with participants dedicating a lot of time and resources. I
+was happy to see few teams I know win the competition and move on to
+the final round. I really wanted to see AI beat previous techniques
+like fuzzing and symbolic execution, but I think we&rsquo;re not there yet.
+Would love to see more progress in this area!</p>
+<h2 id="hotels--pools">Hotels &amp; Pools</h2>
+<p>I stayed at Mandalay Bay during Black Hat, and Fontainebleau during
+Defcon. Both hotels were great, close to each conference venue, and
+had nice pools.</p>
+<p>Mandalay Bay was a classic hotel with a spacious room. It was a bit
+old-fashioned, but the room was clean and comfortable. The hotel was
+huge, and I had to walk a lot to get to the conference venue. I think
+I didn&rsquo;t had enough time to explore the hotel during Black Hat, but I
+did enjoy their pool before checking out.</p>
+<p>Mandalay&rsquo;s pool was really nice. On Friday, before we checked out, we
+went to the pool, and surprisingly, there weren&rsquo;s many people. With
+various pools, wave pool, lazy river, and regular one, it was fun to
+hop around and enjoy the sun. Compared to wave pools in Korea,
+Mandalay&rsquo;s had smaller waves, but they allowed people to swim in the
+deeper areas. While this seemed a bit dangerous for kids and
+non-swimmers, I enjoyed swimming in the pool where my feet couldn&rsquo;t
+touch the ground.</p>
+<p>Unfortunately, we didn&rsquo;t have enough time to enjoy the pool due to the
+check-out time, so we returned on Monday morning, paying $25 for per
+person for a pool pass. However, Monday was much more crowded, and I
+couldn&rsquo;t enjoy the pool as much as I did on Friday. Maybe it was
+because the price was cheaper on Monday, or perhaps because Black Hat
+has ended and many people were staying at the hotel for vacation.
+Still, I enjoyed the pool and got a bit of tan 😎.</p>
+<p>Fontainebleau was much more luxurious than Mandalay Bay. I had seen
+some reviews mentioning that the rooms werenweren&rsquo;s always
+well-cleaned, but our room was okay&ndash;maybe not perfect, but
+acceptable. The room was a bit smaller than at Mandalay Bay, but the
+facilities were mcuh newer and cleaner. They even had USB-C ports on
+the wall!</p>
+<p>Fontainebleau&rsquo;s pool was also nice. Although they didn&rsquo;t have a
+variety of pools like Mandalay Bay, the pool was clean and not too
+crowded. They also offered free parasols for sunbeds! I had a great
+time swimming and relaxing at the pool.</p>
+<p>Despite its expensive image, some restaurants at Fontainebleau were
+good and reasonably priced, considering the usual costs in Las Vegas.
+Our favorite was a Hong Kong-style restaurant called &ldquo;Washing Potato&rdquo;.
+We had lunch there twice to enjoy dim sum and noodles 😋.</p>
+<h2 id="casinos">Casinos</h2>
+<p>I thought I would not be a fan of casinos, but I actually enjoyed
+playing games. I played blackjack and roulette, mostly at
+Fontainebleau, and ended up broke 😂. I realized that I&rsquo;m not good
+at gambling because I&rsquo;m too optimistic, which is good in research but
+not in gambling. For such games, it is obvious that you will lose in
+the long run, but I kept thinking I could win. Perhaps I should learn
+how to play poker instead (?!). Maybe in the next time 😄.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I had a nice time in Las Vegas, although at times the place felt a
+bit too crazy for me. I loved my experience at Black Hat USA. I
+enjoyed presenting my research, meeting people, and learning about
+the latest security trends in research and industry. It definitely
+motivated me to work harder on my research and return to Las Vegas as
+a speaker again!</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z" />
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/research/'>Research</a></div>
+<div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/mte/'>MTE</a>, <a class='tag' href='/tags/blackhat/'>BlackHat</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/2023-review/'>
+        <span aria-hidden='true'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="20" y1="12" x2="4" y2="12" />
+<polyline points="10 18 4 12 10 6" />
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>A review of 2023: Surprises, Triumphs, and Failures</a>
+    </div></div>
+</nav>
+
+
+
+
+    </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2023-2024 Juhee Kim </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+
