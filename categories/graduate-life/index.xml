@@ -6,7 +6,18 @@
     <description>Recent content in Graduate Life on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2023 22:37:51 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/categories/graduate-life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jan 2025 20:37:42 +0000</lastBuildDate><atom:link href="https://juppytt.github.io/categories/graduate-life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACM CCS 2024 Reflection</title>
+      <link>https://juppytt.github.io/posts/ccs24/</link>
+      <pubDate>Mon, 27 Jan 2025 20:37:42 +0000</pubDate>
+      
+      <guid>https://juppytt.github.io/posts/ccs24/</guid>
+      <description>This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had the privilege of presenting my work.
+Pre-Conference Trip The gifts from Zhejiang university students
+Before heading to CCS, some phd students from Zhejiang university reached out to me to hang out together when they stop over in Seoul.</description>
+    </item>
+    
     <item>
       <title>A review of 2023: Surprises, Triumphs, and Failures</title>
       <link>https://juppytt.github.io/posts/2023-review/</link>

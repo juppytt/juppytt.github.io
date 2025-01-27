@@ -6,7 +6,7 @@
     <description>Recent content in Home on juppytt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Aug 2024 10:45:43 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Jan 2025 20:37:42 +0000</lastBuildDate><atom:link href="https://juppytt.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Archive</title>
       <link>https://juppytt.github.io/archive/</link>
@@ -14,6 +14,17 @@
       
       <guid>https://juppytt.github.io/archive/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>ACM CCS 2024 Reflection</title>
+      <link>https://juppytt.github.io/posts/ccs24/</link>
+      <pubDate>Mon, 27 Jan 2025 20:37:42 +0000</pubDate>
+      
+      <guid>https://juppytt.github.io/posts/ccs24/</guid>
+      <description>This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had the privilege of presenting my work.
+Pre-Conference Trip The gifts from Zhejiang university students
+Before heading to CCS, some phd students from Zhejiang university reached out to me to hang out together when they stop over in Seoul.</description>
     </item>
     
     <item>
