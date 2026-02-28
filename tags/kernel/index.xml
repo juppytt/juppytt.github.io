@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>kernel on juppytt&#39;s blog</title>
+    <title>Kernel on juppytt&#39;s blog</title>
     <link>https://juppytt.github.io/tags/kernel/</link>
-    <description>Recent content in kernel on juppytt&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Kernel on juppytt&#39;s blog</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://juppytt.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Security-hardening ARM64 Linux kernel</title>
       <link>https://juppytt.github.io/posts/linux-arm64-hardening/</link>
       <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/linux-arm64-hardening/</guid>
-      <description>Intro In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting security-critical objects and pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features (PAC and MTE).
-Building such a kernel hardening system required me to tackle several key issues:
-Cross-compiling the kernel (X86 -&amp;gt; ARM64) Cross-module kernel analysis Linux kernel instrumentation Connecting the cross-module analysis with kernel build system.</description>
+      <description>&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;&#xA;&lt;p&gt;In the first year of my Ph.D, I ambitiously began a research&#xA;on protecting the Linux kernel against data-only attacks. My research&#xA;especially focused on protecting security-critical objects and&#xA;pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features&#xA;(&lt;a href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/slides_23.pdf&#34;&gt;PAC&lt;/a&gt;&#xA;and &lt;a href=&#34;https://developer.arm.com/documentation/102925/latest/&#34;&gt;MTE&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p&gt;Building such a kernel hardening system required me to&#xA;tackle several key issues:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Cross-compiling the kernel (X86 -&amp;gt; ARM64)&lt;/li&gt;&#xA;&lt;li&gt;Cross-module kernel analysis&lt;/li&gt;&#xA;&lt;li&gt;Linux kernel instrumentation&lt;/li&gt;&#xA;&lt;li&gt;Connecting the cross-module analysis with kernel build system.&lt;/li&gt;&#xA;&lt;li&gt;Setting up ARM64 environments for both emulation and a real device&#xA;(Raspberry Pi 4B).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;As someone who was not well familar with kernel and compiler, each of&#xA;these issues presented quite a challenge. So I thought it would be nice&#xA;to write about each of the issues to help others facing similar&#xA;issues.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

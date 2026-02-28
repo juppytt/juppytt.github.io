@@ -4,18 +4,16 @@
     <title>Hugging Face on juppytt&#39;s blog</title>
     <link>https://juppytt.github.io/tags/hugging-face/</link>
     <description>Recent content in Hugging Face on juppytt&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://juppytt.github.io/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jul 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugging (Evil) Face: Security issues in Hugging Face</title>
       <link>https://juppytt.github.io/posts/hugging-evil-face/</link>
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/hugging-evil-face/</guid>
-      <description>Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
-Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.</description>
+      <description>&lt;figure class=&#34;img&#34;&gt;&lt;img src=&#34;https://juppytt.github.io/images/devil-hugging-face.png&#34; width=&#34;30%&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;In recent years, emerging technology in Machine Learning and Large&#xA;Language Model (LLM) had led to the development of ML/LLM-powered&#xA;applications. One of the popular service for ML/LLM application is&#xA;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt;. In this post, I would like&#xA;to describe the potential security risks in current Hugging Face,&#xA;especially in &lt;a href=&#34;https://huggingface.co/spaces&#34;&gt;Spaces&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;hugging-face&#34;&gt;Hugging Face&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt; is a AI community that&#xA;provides a lot of machine learning models, datasets, and&#xA;applications. Users can contribute their own models, datasets, and&#xA;demo applications (i.e., Spaces) to the community. This community has&#xA;been growing rapidly since the advent of the transformer model.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

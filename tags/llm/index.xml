@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LLM on juppytt&#39;s blog</title>
+    <link>https://juppytt.github.io/tags/llm/</link>
+    <description>Recent content in LLM on juppytt&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Feb 2026 03:00:00 +0900</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Living with Otter, my personal AI assistant</title>
+      <link>https://juppytt.github.io/posts/living-with-ai-assistant/</link>
+      <pubDate>Wed, 25 Feb 2026 03:00:00 +0900</pubDate>
+      <guid>https://juppytt.github.io/posts/living-with-ai-assistant/</guid>
+      <description>&lt;p&gt;Last summer, during my internship at Meta, I heard security people saying that&#xA;fully autonomous AI agents were still some time away. The fundamental security issues had&#xA;not been solved, and the industry was being cautious.&lt;/p&gt;&#xA;&lt;p&gt;Then &lt;a href=&#34;https://openclaw.ai&#34;&gt;OpenClaw&lt;/a&gt; just dropped. It fetches external data and acts on user&amp;rsquo;s private data at&#xA;the same time. It is indeed dangerous, but I tried it anyway, and I found it quite&#xA;useful.&lt;/p&gt;&#xA;&lt;p&gt;I &lt;em&gt;hatched&lt;/em&gt; Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop,&#xA;connects to Slack, and has access to my calendar, email, and files.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

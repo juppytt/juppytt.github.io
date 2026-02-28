@@ -4,79 +4,72 @@
     <title>Posts on juppytt&#39;s blog</title>
     <link>https://juppytt.github.io/posts/</link>
     <description>Recent content in Posts on juppytt&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jan 2025 21:27:37 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Feb 2026 03:00:00 +0900</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Living with Otter, my personal AI assistant</title>
+      <link>https://juppytt.github.io/posts/living-with-ai-assistant/</link>
+      <pubDate>Wed, 25 Feb 2026 03:00:00 +0900</pubDate>
+      <guid>https://juppytt.github.io/posts/living-with-ai-assistant/</guid>
+      <description>&lt;p&gt;Last summer, during my internship at Meta, I heard security people saying that&#xA;fully autonomous AI agents were still some time away. The fundamental security issues had&#xA;not been solved, and the industry was being cautious.&lt;/p&gt;&#xA;&lt;p&gt;Then &lt;a href=&#34;https://openclaw.ai&#34;&gt;OpenClaw&lt;/a&gt; just dropped. It fetches external data and acts on user&amp;rsquo;s private data at&#xA;the same time. It is indeed dangerous, but I tried it anyway, and I found it quite&#xA;useful.&lt;/p&gt;&#xA;&lt;p&gt;I &lt;em&gt;hatched&lt;/em&gt; Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop,&#xA;connects to Slack, and has access to my calendar, email, and files.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Review of 2024</title>
       <link>https://juppytt.github.io/posts/2024-review/</link>
       <pubDate>Tue, 28 Jan 2025 21:27:37 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/2024-review/</guid>
-      <description>January has flown by in a blink of an eye! While 2025 is already into its second month, it&amp;rsquo;s lunar new year today, so I decided to write a review of 2024.
-Research 2024 was a year filled with deadlines after deadlines. From January 2024 to January 2025, I submitted three different papers a total of four times, went through four rebuttals, and had two papers accepted. The last one is currently under review.</description>
+      <description>&lt;p&gt;January has flown by in a blink of an eye! While 2025 is already into&#xA;its second month, it&amp;rsquo;s lunar new year today, so I decided to write a&#xA;review of 2024.&lt;/p&gt;&#xA;&lt;h3 id=&#34;research&#34;&gt;Research&lt;/h3&gt;&#xA;&lt;p&gt;2024 was a year filled with deadlines after deadlines. From January&#xA;2024 to January 2025, I submitted three different papers a total of&#xA;four times, went through four rebuttals, and had two papers accepted.&#xA;The last one is currently under review.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ACM CCS 2024 Reflection</title>
       <link>https://juppytt.github.io/posts/ccs24/</link>
       <pubDate>Mon, 27 Jan 2025 20:37:42 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/ccs24/</guid>
-      <description>This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had the privilege of presenting my work.
-Pre-Conference Trip The gifts from Zhejiang university students
-Before heading to CCS, some phd students from Zhejiang university reached out to me to hang out together when they stop over in Seoul.</description>
+      <description>&lt;p&gt;This is a personal note for the ACM CCS 2024 I made after the event.&#xA;CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time&#xA;attending CCS, but this time I had the privilege of presenting my&#xA;work.&lt;/p&gt;&#xA;&lt;h4 id=&#34;pre-conference-trip&#34;&gt;Pre-Conference Trip&lt;/h4&gt;&#xA;&lt;figure class=&#34;img&#34;&gt;&lt;img src=&#34;https://juppytt.github.io/images/ccs-2024-gifts.jpg&#34;&#xA;    alt=&#34;The gifts from Zhejiang university students&#34; width=&#34;80%&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;&lt;em&gt;The gifts from Zhejiang university students&lt;/em&gt;&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Before heading to CCS, some phd students from Zhejiang university&#xA;reached out to me to hang out together when they stop over in Seoul.&#xA;I appreciated their offer and we had a short 5-hour trip in Seoul,&#xA;visiting Gyoungbokgung Palace and Namsan tower. They even gave me&#xA;gifts from their town :heart:. I&amp;rsquo;m so glad to make new friends&#xA;from China and hope to see them again in the future.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Black Hat USA 2024</title>
       <link>https://juppytt.github.io/posts/bhusa24/</link>
       <pubDate>Wed, 14 Aug 2024 10:45:43 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/bhusa24/</guid>
-      <description>From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and Defcon 32) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.
-Black Hat USA 2024 First Black Hat experience I&amp;rsquo;ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference.</description>
+      <description>&lt;p&gt;From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and&#xA;Defcon 32) in Las Vegas. I presented my research on &lt;a href=&#34;https://www.blackhat.com/us-24/briefings/schedule/#bypassing-arms-memory-tagging-extension-with-a-side-channel-attack-38669&#34;&gt;Bypassing MTE&#xA;with a side-channel&#xA;attack&lt;/a&gt;.&#xA;I returned to Korea this morning (luckily, no jet lag) and am writing&#xA;this post to share my experiences from Las Vegas before I forget them.&lt;/p&gt;&#xA;&lt;h1 id=&#34;black-hat-usa-2024&#34;&gt;Black Hat USA 2024&lt;/h1&gt;&#xA;&lt;h2 id=&#34;first-black-hat-experience&#34;&gt;First Black Hat experience&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve never been to Black Hat before, so I was very excited, especially&#xA;since I was going to present for the first time in an international&#xA;conference. There were lots of people, great talks, and free food and&#xA;drinks :blue_heart:. Some gifts were also given: a Black Hat&#xA;backpack, which I found very practical and useful, a tumblr with a&#xA;straw, and a badge.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A review of 2023: Surprises, Triumphs, and Failures</title>
       <link>https://juppytt.github.io/posts/2023-review/</link>
       <pubDate>Sun, 31 Dec 2023 22:37:51 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/2023-review/</guid>
-      <description>It&amp;rsquo;s the end of 2023, and as I look back on the year, I can only say that it was a year full of research. I remember the days spent in front of the computer, reading papers, and conducting experiments. Of course, there were other events this year, including the creation of this blog (yay!). So, I decided it would be nice to write a review of 2023, to reflect on this year and to prepare for the next year.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s the end of 2023, and as I look back on the year, I can only say&#xA;that it was a year full of research. I remember the days spent in&#xA;front of the computer, reading papers, and conducting experiments. Of&#xA;course, there were other events this year, including the creation of&#xA;this blog (yay!). So, I decided it would be nice&#xA;to write a review of&#xA;2023, to reflect on this year and to prepare for the next year.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Series: Graduate School Productivity - Introduction</title>
       <link>https://juppytt.github.io/posts/series-productivity/</link>
       <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/series-productivity/</guid>
-      <description>Time flies in graduate school! Having spent 3.5 years as a PhD student, one thing I&amp;rsquo;ve learned is that I should be super-efficient in managing my time and energy.
-I&amp;rsquo;m not someone you&amp;rsquo;d label as &amp;ldquo;born productive&amp;rdquo;. I&amp;rsquo;m a typical &amp;ldquo;P&amp;rdquo;-type person according to Myers-Briggs Type Indicator (MBTI)&amp;ndash;indicative of a spontaneous and flexible nature. As many P-type people do, I&amp;rsquo;m prone to distraction and have difficulty in sticking to routines. Daily to-do lists or planners are ways to self-torture by confining free will into a fixed schedule.</description>
+      <description>&lt;p&gt;Time flies in graduate school! Having spent 3.5 years as a PhD&#xA;student, one thing I&amp;rsquo;ve learned is that I should be super-efficient&#xA;in managing my time and energy.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not someone you&amp;rsquo;d label as &amp;ldquo;born productive&amp;rdquo;. I&amp;rsquo;m a typical&#xA;&amp;ldquo;P&amp;rdquo;-type person according to &lt;a href=&#34;https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator&#34;&gt;Myers-Briggs Type Indicator&#xA;(MBTI)&lt;/a&gt;&amp;ndash;indicative&#xA;of a spontaneous and flexible nature. As many P-type people do, I&amp;rsquo;m&#xA;prone to distraction and have difficulty in sticking to routines.&#xA;Daily to-do lists or planners are ways to self-torture by confining&#xA;free will into a fixed schedule. I also sleep a lot and have a hard&#xA;time waking up early.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hugging (Evil) Face: Security issues in Hugging Face</title>
       <link>https://juppytt.github.io/posts/hugging-evil-face/</link>
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/hugging-evil-face/</guid>
-      <description>Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
-Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.</description>
+      <description>&lt;figure class=&#34;img&#34;&gt;&lt;img src=&#34;https://juppytt.github.io/images/devil-hugging-face.png&#34; width=&#34;30%&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;In recent years, emerging technology in Machine Learning and Large&#xA;Language Model (LLM) had led to the development of ML/LLM-powered&#xA;applications. One of the popular service for ML/LLM application is&#xA;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt;. In this post, I would like&#xA;to describe the potential security risks in current Hugging Face,&#xA;especially in &lt;a href=&#34;https://huggingface.co/spaces&#34;&gt;Spaces&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;hugging-face&#34;&gt;Hugging Face&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt; is a AI community that&#xA;provides a lot of machine learning models, datasets, and&#xA;applications. Users can contribute their own models, datasets, and&#xA;demo applications (i.e., Spaces) to the community. This community has&#xA;been growing rapidly since the advent of the transformer model.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Security-hardening ARM64 Linux kernel</title>
       <link>https://juppytt.github.io/posts/linux-arm64-hardening/</link>
       <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/linux-arm64-hardening/</guid>
-      <description>Intro In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting security-critical objects and pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features (PAC and MTE).
-Building such a kernel hardening system required me to tackle several key issues:
-Cross-compiling the kernel (X86 -&amp;gt; ARM64) Cross-module kernel analysis Linux kernel instrumentation Connecting the cross-module analysis with kernel build system.</description>
+      <description>&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;&#xA;&lt;p&gt;In the first year of my Ph.D, I ambitiously began a research&#xA;on protecting the Linux kernel against data-only attacks. My research&#xA;especially focused on protecting security-critical objects and&#xA;pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features&#xA;(&lt;a href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/slides_23.pdf&#34;&gt;PAC&lt;/a&gt;&#xA;and &lt;a href=&#34;https://developer.arm.com/documentation/102925/latest/&#34;&gt;MTE&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p&gt;Building such a kernel hardening system required me to&#xA;tackle several key issues:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Cross-compiling the kernel (X86 -&amp;gt; ARM64)&lt;/li&gt;&#xA;&lt;li&gt;Cross-module kernel analysis&lt;/li&gt;&#xA;&lt;li&gt;Linux kernel instrumentation&lt;/li&gt;&#xA;&lt;li&gt;Connecting the cross-module analysis with kernel build system.&lt;/li&gt;&#xA;&lt;li&gt;Setting up ARM64 environments for both emulation and a real device&#xA;(Raspberry Pi 4B).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;As someone who was not well familar with kernel and compiler, each of&#xA;these issues presented quite a challenge. So I thought it would be nice&#xA;to write about each of the issues to help others facing similar&#xA;issues.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title></title>
+      <link>https://juppytt.github.io/posts/_examples-living-with-ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://juppytt.github.io/posts/_examples-living-with-ai/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;example-1-morning-weather-nightly-weather-cron&#34;&gt;Example 1: Morning Weather (nightly-weather cron)&lt;/h2&gt;&#xA;&lt;p&gt;What shows up in Slack every evening at 9:50 PM:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;🌤️ Weather Forecast – Feb 26 (Thursday)&#xA;🌤️ Partly cloudy | Low 0°C / High 10°C&#xA;&#xA;Cold in the morning but the sun comes out in the afternoon. No rain in the forecast, so you can leave the umbrella at home.&#xA;A down jacket or heavy coat in the morning, a lighter layer by afternoon should be fine.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;example-2-morning-calendar-briefing-morning-calendar-cron-8-am&#34;&gt;Example 2: Morning Calendar Briefing (morning-calendar cron, 8 AM)&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;📅 Daily Lineup&#xA;&#xA;🌲 09:00–11:00  Deep Work — Paper draft&#xA;🌿 13:00–14:00  Lab meeting&#xA;🌲 15:00–17:00  Deep Work — Code experiments&#xA;                Gym (7:00 PM)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Color code: 🌲 = focused deep work, 🌿 = lighter meetings/admin. Calendar items not related to work show up without an emoji.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

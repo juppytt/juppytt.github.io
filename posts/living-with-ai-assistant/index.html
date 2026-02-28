@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Last summer, during my internship at Meta, I heard security people saying that
+fully autonomous AI agents were still some time away. The fundamental security issues had
+not been solved, and the industry was being cautious.
+Then OpenClaw just dropped. It fetches external data and acts on user&rsquo;s private data at
+the same time. It is indeed dangerous, but I tried it anyway, and I found it quite
+useful.
+I hatched Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop,
+connects to Slack, and has access to my calendar, email, and files.'>
+<meta name='theme-color' content='#21D4C2'>
+
+<meta property='og:title' content='Living with Otter, my personal AI assistant • juppytt&#39;s blog'>
+<meta property='og:description' content='Last summer, during my internship at Meta, I heard security people saying that
+fully autonomous AI agents were still some time away. The fundamental security issues had
+not been solved, and the industry was being cautious.
+Then OpenClaw just dropped. It fetches external data and acts on user&rsquo;s private data at
+the same time. It is indeed dangerous, but I tried it anyway, and I found it quite
+useful.
+I hatched Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop,
+connects to Slack, and has access to my calendar, email, and files.'>
+<meta property='og:url' content='https://juppytt.github.io/posts/living-with-ai-assistant/'>
+<meta property='og:site_name' content='juppytt&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='agents'><meta property='article:tag' content='LLM'><meta property='article:tag' content='productivity'><meta property='article:tag' content='OpenClaw'><meta property='article:published_time' content='2026-02-25T03:00:00&#43;09:00'/><meta property='article:modified_time' content='2026-02-25T03:00:00&#43;09:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.154.2">
+
+  <title>Living with Otter, my personal AI assistant • juppytt&#39;s blog</title>
+  <link rel='canonical' href='https://juppytt.github.io/posts/living-with-ai-assistant/'>
+  
+  
+  <link rel='icon' href='/fav.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#21D4C2;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about widget-social_menu sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/1024.png'>
+      </a>
+    </div>
+    
+
+    
+    <h2 class='title site-title '>
+      <a href='/' style="color:var(--color-accent)">
+      juppytt&#39;s blog
+      </a>
+    </h2>
+    <div class='desc'>By Juhee Kim</div><nav aria-label='Social Menu'>
+      <ul><li>
+          <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+        </li><li>
+          <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+        </li><li>
+          <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+            <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+        </li></ul>
+    </nav>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/'>Home</a></li><li class='item'>
+  <a href='/archive/'>Archive</a></li><li class='item has-children'>
+  <a href='/categories/'>Categories</a><button class='sub-menu-toggler'>
+    <span class='screen-reader-text'>expand sub menu</span>
+    <span class='sign'></span>
+  </button>
+
+  <ul class='sub-menu'><li class='item'>
+  <a href='/categories/graduate-life/'>graduate life</a></li><li class='item'>
+  <a href='/categories/research/'>research</a></li></ul></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/agents/' style='font-size:1em'>Agents</a>
+      </li><li>
+        <a href='/tags/blackhat/' style='font-size:1em'>BlackHat</a>
+      </li><li>
+        <a href='/tags/hugging-face/' style='font-size:1em'>Hugging Face</a>
+      </li><li>
+        <a href='/tags/kernel/' style='font-size:1em'>Kernel</a>
+      </li><li>
+        <a href='/tags/llm/' style='font-size:1em'>LLM</a>
+      </li><li>
+        <a href='/tags/llvm/' style='font-size:1em'>LLVM</a>
+      </li><li>
+        <a href='/tags/mte/' style='font-size:1em'>MTE</a>
+      </li><li>
+        <a href='/tags/openclaw/' style='font-size:1em'>OpenClaw</a>
+      </li><li>
+        <a href='/tags/productivity/' style='font-size:1.5em'>Productivity</a>
+      </li><li>
+        <a href='/tags/qemu/' style='font-size:1em'>QEMU</a>
+      </li></ul>
+</div>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="3" y1="12" x2="21" y2="12" />
+<line x1="3" y1="6" x2="21" y2="6" />
+<line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+</span>
+  <span class='close'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="18" y1="6" x2="6" y2="18" />
+<line x1="6" y1="6" x2="18" y2="18" />
+</svg>
+</span>
+</button>
+    <ul></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Home</a></li><li><a href='/posts/'>Posts</a></li><li><span>Living with Otter, my personal AI assistant</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>juppytt&#39;s blog</p><p class='desc site-desc'>Writings on Security Research and Graduate Life</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Living with Otter, my personal AI assistant</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+<line x1="16" y1="2" x2="16" y2="6" />
+<line x1="8" y1="2" x2="8" y2="6" />
+<line x1="3" y1="10" x2="21" y2="10" />
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2026-02-25T03:00:00&#43;09:00'>2026, Feb 25</time>
+</span>
+
+  
+  
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>Last summer, during my internship at Meta, I heard security people saying that
+fully autonomous AI agents were still some time away. The fundamental security issues had
+not been solved, and the industry was being cautious.</p>
+<p>Then <a href="https://openclaw.ai">OpenClaw</a> just dropped. It fetches external data and acts on user&rsquo;s private data at
+the same time. It is indeed dangerous, but I tried it anyway, and I found it quite
+useful.</p>
+<p>I <em>hatched</em> Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop,
+connects to Slack, and has access to my calendar, email, and files.</p>
+<hr>
+<h2 id="setup">Setup</h2>
+<ul>
+<li><strong><a href="https://openclaw.ai">OpenClaw</a></strong>: The core framework. Runs Claude as a long-running agent on my desktop.</li>
+<li><strong>Slack</strong>: The interface. Separate channels for different purposes: <code>#personal</code>, <code>#research</code>, <code>#blog</code>, <code>#dev-openclaw</code>.</li>
+<li><strong><a href="https://obsidian.md">Obsidian</a></strong>: I already used this for research notes. I created an <code>OpenClaw/</code> folder inside the vault and wrote a <code>Skill</code> to manage notes and todos there.</li>
+<li><strong>Headless-Clawd</strong>: A plugin (by @threeearcat, currently private) that runs Claude Code and Codex using my existing subscriptions, sandboxed inside Docker containers. Otter can write and run code, edit files, and commit to git autonomously.</li>
+<li><strong><a href="https://gogcli.sh">gog</a></strong>: A CLI tool that uses my Google OAuth. Gives Otter access to Gmail, Google Drive, and Google Calendar.</li>
+<li><strong>Crons</strong>: Scheduled jobs, incluing Morning report, weather alert, nightly work, and more.</li>
+<li><strong>systemd.timer and HEARTBEAT.md</strong>: Periodic checks that run in the background and notify me when something needs attention.</li>
+</ul>
+<hr>
+<h2 id="my-day-with-otter">My Day with Otter</h2>
+<h3 id="-7-am-morning-report">🌅 7 AM, morning report</h3>
+<p>Every morning, Otter sends a text summary of what it worked on overnight, what still
+needs doing, and anything that requires my input. It also sends a TTS audio version, so
+I can listen on my commute.</p>
+<figure class="img"><img src="/images/nightly-report-morning.png"
+    alt="Morning report tells me what was done overnight and what needs my attention" width="100%"><figcaption>
+      <p><em>Morning report tells me what was done overnight and what needs my attention</em></p>
+    </figcaption>
+</figure>
+
+<h3 id="-8-am-calendar-briefing">📅 8 AM, calendar briefing</h3>
+<p>At 8 AM, a short Slack message lays out the day. Meetings, focus blocks,
+anything on the calendar. Focus block is marked with 🌲. I can overview what the day looks like from slack, without visiting calendar.google.com.</p>
+<figure class="img"><img src="/images/daily-lineup.png"
+    alt="Daily lineup, calendar events and todos scheduled for the day" width="100%"><figcaption>
+      <p><em>Daily lineup, calendar events and todos scheduled for the day</em></p>
+    </figcaption>
+</figure>
+
+<h3 id="-10-am-research-brainstorming">🔬 10 AM, research brainstorming</h3>
+<p>I open a Slack channel for research project and talk through whatever
+I am working on. Ideas, deadlines, and things I need to track down. As the
+conversation goes, Otter picks up todo items and research notes and
+writes them to the right Obsidian file.
+<figure class="img"><img src="/images/research-todo-added.png"
+    alt="Asking Otter about a Claude Code feature, it looks it up and adds a follow-up todo to my dev notes" width="100%"><figcaption>
+      <p><em>Asking Otter about a Claude Code feature, it looks it up and adds a follow-up todo to my dev notes</em></p>
+    </figcaption>
+</figure>
+</p>
+<h3 id="-12-pm-lunch-break-and-headless-clawd">💻 12 PM, lunch break and headless clawd</h3>
+<p>Waiting for coffee at a cafe. I pull out my phone, open Slack, and describe a task
+to Otter. Something like running an analysis, fixing a bug, or drafting a document.
+Otter hands it off to headless-clawd, Claude Code running in a Docker container on my
+desktop.</p>
+<figure class="img"><img src="/images/headless-clawd-self-dev.png"
+    alt="Using headless-clawd to work on the headless-clawd plugin itself" width="100%"><figcaption>
+      <p><em>Using headless-clawd to work on the headless-clawd plugin itself</em></p>
+    </figcaption>
+</figure>
+
+<p>Being able to get work done without sitting at my computer was something I really wanted.
+This is exactly that.</p>
+<h3 id="-4-pm-paper-recommendations">📚 4 PM, paper recommendations</h3>
+<p>Google Scholar sends me email for paper recommendation. A script runs
+every 30 minutes to check Gmail for new Scholar alerts. When one
+arrives, it parses the email and wakes Otter via a POST to
+<code>/hooks/wake</code>. Otter then filters the papers by relevance to my
+research and posts a curated list to my <code>#reading</code> channel with a
+short description and tags for each paper.</p>
+<figure class="img"><img src="/images/scholar-alert-full.png"
+    alt="Scholar alert in #reading, 4 curated papers with tags and PDF links. Typing add 1 and 2 queues them to the reading list." width="100%"><figcaption>
+      <p><em>Scholar alert in #reading, 4 curated papers with tags and PDF links. Typing add 1 and 2 queues them to the reading list.</em></p>
+    </figcaption>
+</figure>
+
+<h3 id="-10-pm-weather-forecast">🌙 10 PM, weather forecast</h3>
+<p>Every night around 10 PM, Otter sends the next day&rsquo;s forecast for Seoul. Temperature
+range, conditions, and what to wear. Unlike a weather app, it pushes the information to
+me so I do not have to think to open it.</p>
+<figure class="img"><img src="/images/weather-forecast.png"
+    alt="Evening weather forecast, temperature range, conditions, and what to wear" width="100%"><figcaption>
+      <p><em>Evening weather forecast, temperature range, conditions, and what to wear</em></p>
+    </figcaption>
+</figure>
+
+<h3 id="-3-am-nightly-work">🦦 3 AM, nightly work</h3>
+<p>While I sleep, Otter works through the todo queue. Writing drafts, organizing notes,
+running code experiments, committing results to git.</p>
+<p>Otter working alone is not perfect. It makes mistakes, misses context, and sometimes
+does things I need to redo. But the biggest benefit I have noticed is, it <em>starts</em>
+things. On my own, I would have delayed those tasks for weeks or never gotten around to
+them at all. Getting started is the hardest part, and Otter does that.</p>
+<hr>
+<h2 id="things-i-noticed">Things I Noticed</h2>
+<p><strong>Productive, or just feels that way?</strong> When AI agents started appearing, I had both
+excitement and skepticism. Would they actually change how I work, or just add noise? After
+a few weeks with OpenClaw, I at least <em>feel</em> more productive. Whether that is real, I cannot say yet. I plan to write a follow-up on specific features I have
+added to push things further.</p>
+<p><strong>More output, more review.</strong> The more I delegate, the more Otter produces. Notes,
+commits, Slack messages. This is the same cognitive burden that shows up with coding
+agents: the agent writes more code, so there is more code to review. A <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR study</a> on experienced open-source developers (using early 2025 models) found
+that using AI tools made developers 19% slower overall. More output from the AI means
+more to read, verify, and fix. Delegation does not always reduce effort.</p>
+<p><strong>Debugging is harder.</strong> I have a separate post planned on this. Briefly, agentic systems are non-deterministic, which makes bugs harder to isolate. OpenClaw
+itself is a large codebase, and when something goes wrong it is not always clear
+whether it is a code bug or the AI making a bad judgment call. If you go hunting for a
+code bug and it turns out the AI just made a mistake, you can spend a long time looking at
+completely the wrong thing.</p>
+<hr>
+<h2 id="on-security">On Security</h2>
+<p>An OpenClaw agent has access to your files, calendars, and the ability to act on your
+behalf. Technically, something like this has been possible for a while. But there was no
+usable form of it until OpenClaw showed up.</p>
+<p>Then, OpenClaw dropped, and it went viral. <a href="https://moltbookai.net">Moltbook</a>, an internet
+forum where AI agents post, started filling up with OpenClaw agents writing their own
+content. People found it fascinating, and early adopters started running OpenClaw to see
+what their own agents would do.</p>
+<p>The OpenClaw inventor said in an <a href="https://www.youtube.com/watch?v=9jgcT0Fqt7U">interview</a>:</p>
+<blockquote>
+<p>I&rsquo;m sure prompt injection is possible, but it&rsquo;s not as easy as people think it is.</p>
+</blockquote>
+<p>That is probably true today. But as more people adopt OpenClaw, it will become a more
+interesting target. After just a few days of use, I can already see many potential attack
+vectors. There is a lot to study here.</p>
+<p>Despite its vulnerabilities, having a real deployed agent changes what security research
+looks like. Before OpenClaw, agent security was mostly theoretical. Now it is possible to
+do practical, grounded work on real systems that people actually use.</p>
+<p>For now, my protection is mostly prompt-level. I instructed Otter to ask for confirmation
+before any action that reaches outside my own system, things like sending emails, posting
+publicly, or messaging other people. All file changes go through git so everything is
+reversible. Prompt-level defenses provide no security guarantees, but it is what I have for now. The actual solution is a research problem, which is actually what I am working on.
+There are a few active directions, including my own work on <a href="https://arxiv.org/abs/2503.15547">Prompt Flow Integrity</a> and similar concurrent works like <a href="https://arxiv.org/pdf/2505.23643">FIDES</a> and <a href="https://arxiv.org/abs/2503.18813">CaMeL</a>.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z" />
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/ai/'>AI</a></div>
+<div class='tags'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
+<line x1="7" y1="7" x2="7" y2="7" />
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/agents/'>Agents</a>, <a class='tag' href='/tags/llm/'>LLM</a>, <a class='tag' href='/tags/productivity/'>Productivity</a>, <a class='tag' href='/tags/openclaw/'>OpenClaw</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/2024-review/'>
+        <span aria-hidden='true'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><line x1="20" y1="12" x2="4" y2="12" />
+<polyline points="10 18 4 12 10 6" />
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Review of 2024</a>
+    </div></div>
+</nav>
+
+
+
+
+    </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/juppytt' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:kimjuhi96@snu.ac.kr' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+<polyline points="22,6 12,13 2,6" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/juhee-kim-101066213' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+<rect x="2" y="9" width="4" height="12" />
+<circle cx="4" cy="4" r="2" />
+</svg>
+</a>
+      </li><li>
+        <a href='https://scholar.google.com/citations?user=b8_rmPgAAAAJ' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z" />
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2023-2026 Juhee Kim </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

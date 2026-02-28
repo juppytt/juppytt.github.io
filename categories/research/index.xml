@@ -4,39 +4,30 @@
     <title>Research on juppytt&#39;s blog</title>
     <link>https://juppytt.github.io/categories/research/</link>
     <description>Recent content in Research on juppytt&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Aug 2024 10:45:43 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Aug 2024 10:45:43 +0900</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/categories/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Black Hat USA 2024</title>
       <link>https://juppytt.github.io/posts/bhusa24/</link>
       <pubDate>Wed, 14 Aug 2024 10:45:43 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/bhusa24/</guid>
-      <description>From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and Defcon 32) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.
-Black Hat USA 2024 First Black Hat experience I&amp;rsquo;ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference.</description>
+      <description>&lt;p&gt;From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and&#xA;Defcon 32) in Las Vegas. I presented my research on &lt;a href=&#34;https://www.blackhat.com/us-24/briefings/schedule/#bypassing-arms-memory-tagging-extension-with-a-side-channel-attack-38669&#34;&gt;Bypassing MTE&#xA;with a side-channel&#xA;attack&lt;/a&gt;.&#xA;I returned to Korea this morning (luckily, no jet lag) and am writing&#xA;this post to share my experiences from Las Vegas before I forget them.&lt;/p&gt;&#xA;&lt;h1 id=&#34;black-hat-usa-2024&#34;&gt;Black Hat USA 2024&lt;/h1&gt;&#xA;&lt;h2 id=&#34;first-black-hat-experience&#34;&gt;First Black Hat experience&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve never been to Black Hat before, so I was very excited, especially&#xA;since I was going to present for the first time in an international&#xA;conference. There were lots of people, great talks, and free food and&#xA;drinks :blue_heart:. Some gifts were also given: a Black Hat&#xA;backpack, which I found very practical and useful, a tumblr with a&#xA;straw, and a badge.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hugging (Evil) Face: Security issues in Hugging Face</title>
       <link>https://juppytt.github.io/posts/hugging-evil-face/</link>
       <pubDate>Wed, 19 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/hugging-evil-face/</guid>
-      <description>Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is Hugging Face. In this post, I would like to describe the potential security risks in current Hugging Face, especially in Spaces.
-Hugging Face Hugging Face is a AI community that provides a lot of machine learning models, datasets, and applications.</description>
+      <description>&lt;figure class=&#34;img&#34;&gt;&lt;img src=&#34;https://juppytt.github.io/images/devil-hugging-face.png&#34; width=&#34;30%&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;In recent years, emerging technology in Machine Learning and Large&#xA;Language Model (LLM) had led to the development of ML/LLM-powered&#xA;applications. One of the popular service for ML/LLM application is&#xA;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt;. In this post, I would like&#xA;to describe the potential security risks in current Hugging Face,&#xA;especially in &lt;a href=&#34;https://huggingface.co/spaces&#34;&gt;Spaces&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;hugging-face&#34;&gt;Hugging Face&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://huggingface.co/&#34;&gt;Hugging Face&lt;/a&gt; is a AI community that&#xA;provides a lot of machine learning models, datasets, and&#xA;applications. Users can contribute their own models, datasets, and&#xA;demo applications (i.e., Spaces) to the community. This community has&#xA;been growing rapidly since the advent of the transformer model.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Security-hardening ARM64 Linux kernel</title>
       <link>https://juppytt.github.io/posts/linux-arm64-hardening/</link>
       <pubDate>Sun, 09 Jul 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/linux-arm64-hardening/</guid>
-      <description>Intro In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting security-critical objects and pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features (PAC and MTE).
-Building such a kernel hardening system required me to tackle several key issues:
-Cross-compiling the kernel (X86 -&amp;gt; ARM64) Cross-module kernel analysis Linux kernel instrumentation Connecting the cross-module analysis with kernel build system.</description>
+      <description>&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;&#xA;&lt;p&gt;In the first year of my Ph.D, I ambitiously began a research&#xA;on protecting the Linux kernel against data-only attacks. My research&#xA;especially focused on protecting security-critical objects and&#xA;pointers leveraging the ARM&amp;rsquo;s upcoming hardware security features&#xA;(&lt;a href=&#34;https://events.static.linuxfound.org/sites/events/files/slides/slides_23.pdf&#34;&gt;PAC&lt;/a&gt;&#xA;and &lt;a href=&#34;https://developer.arm.com/documentation/102925/latest/&#34;&gt;MTE&lt;/a&gt;).&lt;/p&gt;&#xA;&lt;p&gt;Building such a kernel hardening system required me to&#xA;tackle several key issues:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Cross-compiling the kernel (X86 -&amp;gt; ARM64)&lt;/li&gt;&#xA;&lt;li&gt;Cross-module kernel analysis&lt;/li&gt;&#xA;&lt;li&gt;Linux kernel instrumentation&lt;/li&gt;&#xA;&lt;li&gt;Connecting the cross-module analysis with kernel build system.&lt;/li&gt;&#xA;&lt;li&gt;Setting up ARM64 environments for both emulation and a real device&#xA;(Raspberry Pi 4B).&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;As someone who was not well familar with kernel and compiler, each of&#xA;these issues presented quite a challenge. So I thought it would be nice&#xA;to write about each of the issues to help others facing similar&#xA;issues.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

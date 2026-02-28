@@ -4,48 +4,37 @@
     <title>Graduate Life on juppytt&#39;s blog</title>
     <link>https://juppytt.github.io/categories/graduate-life/</link>
     <description>Recent content in Graduate Life on juppytt&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Jan 2025 21:27:37 +0900</lastBuildDate><atom:link href="https://juppytt.github.io/categories/graduate-life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Jan 2025 21:27:37 +0900</lastBuildDate>
+    <atom:link href="https://juppytt.github.io/categories/graduate-life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Review of 2024</title>
       <link>https://juppytt.github.io/posts/2024-review/</link>
       <pubDate>Tue, 28 Jan 2025 21:27:37 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/2024-review/</guid>
-      <description>January has flown by in a blink of an eye! While 2025 is already into its second month, it&amp;rsquo;s lunar new year today, so I decided to write a review of 2024.
-Research 2024 was a year filled with deadlines after deadlines. From January 2024 to January 2025, I submitted three different papers a total of four times, went through four rebuttals, and had two papers accepted. The last one is currently under review.</description>
+      <description>&lt;p&gt;January has flown by in a blink of an eye! While 2025 is already into&#xA;its second month, it&amp;rsquo;s lunar new year today, so I decided to write a&#xA;review of 2024.&lt;/p&gt;&#xA;&lt;h3 id=&#34;research&#34;&gt;Research&lt;/h3&gt;&#xA;&lt;p&gt;2024 was a year filled with deadlines after deadlines. From January&#xA;2024 to January 2025, I submitted three different papers a total of&#xA;four times, went through four rebuttals, and had two papers accepted.&#xA;The last one is currently under review.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ACM CCS 2024 Reflection</title>
       <link>https://juppytt.github.io/posts/ccs24/</link>
       <pubDate>Mon, 27 Jan 2025 20:37:42 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/ccs24/</guid>
-      <description>This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had the privilege of presenting my work.
-Pre-Conference Trip The gifts from Zhejiang university students
-Before heading to CCS, some phd students from Zhejiang university reached out to me to hang out together when they stop over in Seoul.</description>
+      <description>&lt;p&gt;This is a personal note for the ACM CCS 2024 I made after the event.&#xA;CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time&#xA;attending CCS, but this time I had the privilege of presenting my&#xA;work.&lt;/p&gt;&#xA;&lt;h4 id=&#34;pre-conference-trip&#34;&gt;Pre-Conference Trip&lt;/h4&gt;&#xA;&lt;figure class=&#34;img&#34;&gt;&lt;img src=&#34;https://juppytt.github.io/images/ccs-2024-gifts.jpg&#34;&#xA;    alt=&#34;The gifts from Zhejiang university students&#34; width=&#34;80%&#34;&gt;&lt;figcaption&gt;&#xA;      &lt;p&gt;&lt;em&gt;The gifts from Zhejiang university students&lt;/em&gt;&lt;/p&gt;&#xA;    &lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Before heading to CCS, some phd students from Zhejiang university&#xA;reached out to me to hang out together when they stop over in Seoul.&#xA;I appreciated their offer and we had a short 5-hour trip in Seoul,&#xA;visiting Gyoungbokgung Palace and Namsan tower. They even gave me&#xA;gifts from their town :heart:. I&amp;rsquo;m so glad to make new friends&#xA;from China and hope to see them again in the future.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A review of 2023: Surprises, Triumphs, and Failures</title>
       <link>https://juppytt.github.io/posts/2023-review/</link>
       <pubDate>Sun, 31 Dec 2023 22:37:51 +0900</pubDate>
-      
       <guid>https://juppytt.github.io/posts/2023-review/</guid>
-      <description>It&amp;rsquo;s the end of 2023, and as I look back on the year, I can only say that it was a year full of research. I remember the days spent in front of the computer, reading papers, and conducting experiments. Of course, there were other events this year, including the creation of this blog (yay!). So, I decided it would be nice to write a review of 2023, to reflect on this year and to prepare for the next year.</description>
+      <description>&lt;p&gt;It&amp;rsquo;s the end of 2023, and as I look back on the year, I can only say&#xA;that it was a year full of research. I remember the days spent in&#xA;front of the computer, reading papers, and conducting experiments. Of&#xA;course, there were other events this year, including the creation of&#xA;this blog (yay!). So, I decided it would be nice&#xA;to write a review of&#xA;2023, to reflect on this year and to prepare for the next year.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Series: Graduate School Productivity - Introduction</title>
       <link>https://juppytt.github.io/posts/series-productivity/</link>
       <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://juppytt.github.io/posts/series-productivity/</guid>
-      <description>Time flies in graduate school! Having spent 3.5 years as a PhD student, one thing I&amp;rsquo;ve learned is that I should be super-efficient in managing my time and energy.
-I&amp;rsquo;m not someone you&amp;rsquo;d label as &amp;ldquo;born productive&amp;rdquo;. I&amp;rsquo;m a typical &amp;ldquo;P&amp;rdquo;-type person according to Myers-Briggs Type Indicator (MBTI)&amp;ndash;indicative of a spontaneous and flexible nature. As many P-type people do, I&amp;rsquo;m prone to distraction and have difficulty in sticking to routines. Daily to-do lists or planners are ways to self-torture by confining free will into a fixed schedule.</description>
+      <description>&lt;p&gt;Time flies in graduate school! Having spent 3.5 years as a PhD&#xA;student, one thing I&amp;rsquo;ve learned is that I should be super-efficient&#xA;in managing my time and energy.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not someone you&amp;rsquo;d label as &amp;ldquo;born productive&amp;rdquo;. I&amp;rsquo;m a typical&#xA;&amp;ldquo;P&amp;rdquo;-type person according to &lt;a href=&#34;https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator&#34;&gt;Myers-Briggs Type Indicator&#xA;(MBTI)&lt;/a&gt;&amp;ndash;indicative&#xA;of a spontaneous and flexible nature. As many P-type people do, I&amp;rsquo;m&#xA;prone to distraction and have difficulty in sticking to routines.&#xA;Daily to-do lists or planners are ways to self-torture by confining&#xA;free will into a fixed schedule. I also sleep a lot and have a hard&#xA;time waking up early.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

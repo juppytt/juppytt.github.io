@@ -70,6 +70,14 @@ em {
 
 .img {
   text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.img img {
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 }
 /* input, optgroup, select, textarea {
   font-size: 90%;
@@ -90,4 +98,5 @@ em {
 .widget-social_menu a:hover {
   color: #21D4C2;
 } */
+
 
