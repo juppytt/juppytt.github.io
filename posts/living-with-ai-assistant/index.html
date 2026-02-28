@@ -398,13 +398,11 @@ what their own agents would do.</p>
 <blockquote>
 <p>I&rsquo;m sure prompt injection is possible, but it&rsquo;s not as easy as people think it is.</p>
 </blockquote>
-<p>That is probably true today. But as more people adopt OpenClaw, it will become a more
-interesting target. After just a few days of use, I can already see many potential attack
-vectors. There is a lot to study here.</p>
-<p>Despite its vulnerabilities, having a real deployed agent changes what security research
-looks like. Before OpenClaw, agent security was mostly theoretical. Now it is possible to
-do practical, grounded work on real systems that people actually use.</p>
-<p>For now, my protection is mostly prompt-level. I instructed Otter to ask for confirmation
+<p>That is probably true today. But as adoption grows, I expect real attacks to follow. After just a few days of use, I can already see many potential attack vectors. There is a lot to study here.</p>
+<p>Despite its vulnerabilities, having a real deployed agent fosters more practical security
+research. Before OpenClaw, agent security was mostly imaginary. With an autonomous agent
+in tangible form, real problems start to surface.</p>
+<p>For now, my protection is mostly prompt-level (there is not even a simple human-in-the-loop confirmation step). I instructed Otter to ask for confirmation
 before any action that reaches outside my own system, things like sending emails, posting
 publicly, or messaging other people. All file changes go through git so everything is
 reversible. Prompt-level defenses provide no security guarantees, but it is what I have for now. The actual solution is a research problem, which is actually what I am working on.
