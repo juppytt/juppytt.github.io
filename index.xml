@@ -79,13 +79,6 @@
       <description></description>
     </item>
     <item>
-      <title></title>
-      <link>https://juppytt.github.io/posts/_examples-living-with-ai/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://juppytt.github.io/posts/_examples-living-with-ai/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;example-1-morning-weather-nightly-weather-cron&#34;&gt;Example 1: Morning Weather (nightly-weather cron)&lt;/h2&gt;&#xA;&lt;p&gt;What shows up in Slack every evening at 9:50 PM:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;🌤️ Weather Forecast – Feb 26 (Thursday)&#xA;🌤️ Partly cloudy | Low 0°C / High 10°C&#xA;&#xA;Cold in the morning but the sun comes out in the afternoon. No rain in the forecast, so you can leave the umbrella at home.&#xA;A down jacket or heavy coat in the morning, a lighter layer by afternoon should be fine.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;example-2-morning-calendar-briefing-morning-calendar-cron-8-am&#34;&gt;Example 2: Morning Calendar Briefing (morning-calendar cron, 8 AM)&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;📅 Daily Lineup&#xA;&#xA;🌲 09:00–11:00  Deep Work — Paper draft&#xA;🌿 13:00–14:00  Lab meeting&#xA;🌲 15:00–17:00  Deep Work — Code experiments&#xA;                Gym (7:00 PM)&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Color code: 🌲 = focused deep work, 🌿 = lighter meetings/admin. Calendar items not related to work show up without an emoji.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Graduate Life</title>
       <link>https://juppytt.github.io/categories/graduate-life/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
