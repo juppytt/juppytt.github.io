@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Juhee Kim</title>
+<link>https://juppytt.github.io/blog.html</link>
+<atom:link href="https://juppytt.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<description>Notes on security research and graduate life.</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Tue, 24 Feb 2026 18:00:00 GMT</lastBuildDate>
+<item>
+  <title>Living with Otter, my personal AI assistant</title>
+  <link>https://juppytt.github.io/posts/living-with-ai-assistant.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Last summer, during my internship at Meta, I heard security people saying that fully autonomous AI agents were still some time away. The fundamental security issues had not been solved, and the industry was being cautious.</p>
+<p>Then <a href="https://openclaw.ai">OpenClaw</a> just dropped. It fetches external data and acts on user’s private data at the same time. It is indeed dangerous, but I tried it anyway, and I found it quite useful.</p>
+<p>I <em>hatched</em> Otter a week ago. Otter is my personal OpenClaw agent. It runs on my desktop, connects to Slack, and has access to my calendar, email, and files.</p>
+<hr>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<ul>
+<li><strong><a href="https://openclaw.ai">OpenClaw</a></strong>: The core framework. Runs Claude as a long-running agent on my desktop.</li>
+<li><strong>Slack</strong>: The interface. Separate channels for different purposes: <code>#personal</code>, <code>#research</code>, <code>#blog</code>, <code>#dev-openclaw</code>.</li>
+<li><strong><a href="https://obsidian.md">Obsidian</a></strong>: I already used this for research notes. I created an <code>OpenClaw/</code> folder inside the vault and wrote a <code>Skill</code> to manage notes and todos there.</li>
+<li><strong>Headless-Clawd</strong>: A plugin (by <span class="citation" data-cites="threeearcat">@threeearcat</span>, currently private) that runs Claude Code, sandboxed inside Docker containers. Otter can write and run code, edit files, and commit to git autonomously.</li>
+<li><strong><a href="https://gogcli.sh">gog</a></strong>: A CLI tool that uses my Google OAuth. Gives Otter access to Gmail, Google Drive, and Google Calendar.</li>
+<li><strong>Crons</strong>: Scheduled jobs, incluing Morning report, weather alert, nightly work, and more.</li>
+<li><h2 id="systemd.timer-and-heartbeat.md-periodic-checks-that-run-in-the-background-and-notify-me-when-something-needs-attention." class="anchored"><strong>systemd.timer and HEARTBEAT.md</strong>: Periodic checks that run in the background and notify me when something needs attention.</h2></li>
+</ul>
+</section>
+<section id="my-day-with-otter" class="level2">
+<h2 class="anchored" data-anchor-id="my-day-with-otter">My Day with Otter</h2>
+<section id="am-morning-report" class="level3">
+<h3 class="anchored" data-anchor-id="am-morning-report">🌅 7 AM, morning report</h3>
+<p>Every morning, Otter sends a text summary of what it worked on overnight, what still needs doing, and anything that requires my input. It also sends a TTS audio version, so I can listen on my commute.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/nightly-report-morning.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Morning report tells me what was done overnight and what needs my attention</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="am-calendar-briefing" class="level3">
+<h3 class="anchored" data-anchor-id="am-calendar-briefing">📅 8 AM, calendar briefing</h3>
+<p>At 8 AM, a short Slack message lays out the day. Meetings, focus blocks, anything on the calendar. Focus block is marked with 🌲. I can overview what the day looks like from slack, without visiting calendar.google.com.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/daily-lineup.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Daily lineup, calendar events and todos scheduled for the day</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="am-research-brainstorming" class="level3">
+<h3 class="anchored" data-anchor-id="am-research-brainstorming">🔬 10 AM, research brainstorming</h3>
+<p>I open a Slack channel for research project and talk through whatever I am working on. Ideas, deadlines, and things I need to track down. As the conversation goes, Otter picks up todo items and research notes and writes them to the right Obsidian file. <img src="https://juppytt.github.io/images/research-todo-added.png" class="img-fluid" style="width:100.0%" alt="Asking Otter about a Claude Code feature, it looks it up and adds a follow-up todo to my dev notes"></p>
+</section>
+<section id="pm-lunch-break-and-headless-clawd" class="level3">
+<h3 class="anchored" data-anchor-id="pm-lunch-break-and-headless-clawd">💻 12 PM, lunch break and headless clawd</h3>
+<p>Waiting for coffee at a cafe. I pull out my phone, open Slack, and describe a task to Otter. Something like running an analysis, fixing a bug, or drafting a document. Otter hands it off to headless-clawd, Claude Code running in a Docker container on my desktop.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/headless-clawd-self-dev.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Using headless-clawd to work on the headless-clawd plugin itself</em></figcaption>
+</figure>
+</div>
+<p>Being able to get work done without sitting at my computer was something I really wanted. This is exactly that.</p>
+</section>
+<section id="pm-paper-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="pm-paper-recommendations">📚 4 PM, paper recommendations</h3>
+<p>Google Scholar sends me email for paper recommendation. A script runs every 30 minutes to check Gmail for new Scholar alerts. When one arrives, it parses the email and wakes Otter via a POST to <code>/hooks/wake</code>. Otter then filters the papers by relevance to my research and posts a curated list to my <code>#reading</code> channel with a short description and tags for each paper.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/scholar-alert-full.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Scholar alert in #reading, 4 curated papers with tags and PDF links. Typing add 1 and 2 queues them to the reading list.</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="pm-weather-forecast" class="level3">
+<h3 class="anchored" data-anchor-id="pm-weather-forecast">🌙 10 PM, weather forecast</h3>
+<p>Every night around 10 PM, Otter sends the next day’s forecast for Seoul. Temperature range, conditions, and what to wear. Unlike a weather app, it pushes the information to me so I do not have to think to open it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/weather-forecast.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption><em>Evening weather forecast, temperature range, conditions, and what to wear</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="am-nightly-work" class="level3">
+<h3 class="anchored" data-anchor-id="am-nightly-work">🦦 3 AM, nightly work</h3>
+<p>While I sleep, Otter works through the todo queue. Writing drafts, organizing notes, running code experiments, committing results to git. What it did overnight gets compiled into the morning report and delivered at 7 AM.</p>
+<p>Otter working alone is not perfect. It makes mistakes, misses context, and sometimes does things I need to redo. But the biggest benefit I have noticed is, it <em>starts</em> things. On my own, I would have delayed those tasks for weeks or never gotten around to them at all. Getting started is the hardest part, and Otter does that.</p>
+<hr>
+</section>
+</section>
+<section id="things-i-noticed" class="level2">
+<h2 class="anchored" data-anchor-id="things-i-noticed">Things I Noticed</h2>
+<p><strong>Productive, or just feels that way?</strong> When AI agents started appearing, I had both excitement and skepticism. Would they actually change how I work, or just add noise? After a few weeks with OpenClaw, I at least <em>feel</em> more productive. Whether that is real, I cannot say yet. I plan to write a follow-up on specific features I have added to push things further.</p>
+<p><strong>More output, more review.</strong> The more I delegate, the more Otter produces. Notes, commits, Slack messages. This is the same cognitive burden that shows up with coding agents: the agent writes more code, so there is more code to review. A <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR study</a> on experienced open-source developers (using early 2025 models) found that using AI tools made developers 19% slower overall. More output from the AI means more to read, verify, and fix. Delegation does not always reduce effort.</p>
+<p><strong>Debugging is harder.</strong> I have a separate post planned on this. Briefly, agentic systems are non-deterministic, which makes bugs harder to isolate. OpenClaw itself is a large codebase, and when something goes wrong it is not always clear whether it is a code bug or the AI making a bad judgment call. If you go hunting for a code bug and it turns out the AI just made a mistake, you can spend a long time looking at completely the wrong thing.</p>
+<hr>
+</section>
+<section id="on-security" class="level2">
+<h2 class="anchored" data-anchor-id="on-security">On Security</h2>
+<p>An OpenClaw agent has access to your files, calendars, and the ability to act on your behalf. Technically, something like this has been possible for a while. But there was no usable form of it until OpenClaw showed up.</p>
+<p>Then, OpenClaw dropped, and it went viral. <a href="https://moltbookai.net">Moltbook</a>, an internet forum where AI agents post, started filling up with OpenClaw agents writing their own content. People found it fascinating, and early adopters started running OpenClaw to see what their own agents would do.</p>
+<p>The OpenClaw inventor said in an <a href="https://www.youtube.com/watch?v=9jgcT0Fqt7U">interview</a>:</p>
+<blockquote class="blockquote">
+<p>I’m sure prompt injection is possible, but it’s not as easy as people think it is.</p>
+</blockquote>
+<p>That is probably true today. But as adoption grows, I expect real attacks to follow. After just a few days of use, I can already see many potential attack vectors. There is a lot to study here.</p>
+<p>Despite its vulnerabilities, having a real deployed agent fosters more practical security research. Before OpenClaw, agent security was mostly imaginary. With an autonomous agent in tangible form, real problems start to surface.</p>
+<p>For now, my protection is mostly prompt-level (there is not even a simple human-in-the-loop confirmation step). I instructed Otter to ask for confirmation before any action that reaches outside my own system, things like sending emails, posting publicly, or messaging other people. All file changes go through git so everything is reversible. Prompt-level defenses provide no security guarantees, but it is what I have for now. The actual solution is a research problem, which is actually what I am working on. There are a few active directions, including my own work on <a href="https://arxiv.org/abs/2503.15547">Prompt Flow Integrity</a> and similar concurrent works like <a href="https://arxiv.org/pdf/2505.23643">FIDES</a> and <a href="https://arxiv.org/abs/2503.18813">CaMeL</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Agents</category>
+  <category>LLM</category>
+  <category>Productivity</category>
+  <category>OpenClaw</category>
+  <guid>https://juppytt.github.io/posts/living-with-ai-assistant.html</guid>
+  <pubDate>Tue, 24 Feb 2026 18:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Review of 2024</title>
+  <link>https://juppytt.github.io/posts/2024-review.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>January has flown by in a blink of an eye! While 2025 is already into its second month, it’s lunar new year today, so I decided to write a review of 2024.</p>
+<section id="research" class="level3">
+<h3 class="anchored" data-anchor-id="research">Research</h3>
+<p>2024 was a year filled with deadlines after deadlines. From January 2024 to January 2025, I submitted three different papers a total of four times, went through four rebuttals, and had two papers accepted. The last one is currently under review.</p>
+<p>Before August, I endured long periods without any publications and faced multiple rejections. While reading my diary, I found my advisor reassured me a lot during that time, telling me that I was doing well and shouldn’t worry too much about the results. I’m grateful for his support.</p>
+<p>In August, I finally had two papers accepted. While the acceptance didn’t significantly change my daily life, they did boost my confidence and fueled motivation to push forward with other projects. The process of conducting research and writing papers can be a struggle, but in the end, the sense of contributing to the research field makes it worthwhile.</p>
+<p>Just last week, I submitted another paper in a new research area. It tackles a new and different problem from the ones I’ve worked on before, while I tried to solve it based on system security background. This paper is a brave step into a new research area for me. I’m not entirely sure if the paper is convincing enough in this new field, but I’m proud to have successfully submitted it.</p>
+</section>
+<section id="conferences" class="level3">
+<h3 class="anchored" data-anchor-id="conferences">Conferences</h3>
+<p>I attended three international conferences: Black Hat at Las Vegas, CCS at Salt Lack City, and Hardware.io at Amsterdam. I’m proud of myself for successfully presenting my work at these conferences. It feels like I’m finally becoming a real researcher. These events also provided great opportunities to meet and network with other researchers.</p>
+</section>
+<section id="life" class="level3">
+<h3 class="anchored" data-anchor-id="life">Life</h3>
+<p>I started using Cambly, an online English tutoring service. It helped me a lot to improve my English communication skills. Cambly is just a normal English tutoring service, but it kind of forces me to take classes regularly, because it offers a certain number of classes a week, which disappear if I don’t take them. So far, I’ve met good tutors and had fun and helpful conversations with them.</p>
+<p>I had LASEK surgery and can now see without glasses!</p>
+<p>I practiced yoga regularly, which helped me improve my posture and build strength. I can now perform more challenging poses. I’ll definitely miss current yoga studio when I leave SNU next year, so I plan to spend the rest of the year practicing here as much as possible.</p>
+<p>Last week, after submitting the paper, my lab members and I went for a dinner nearby. When I got out of the car, I accidentally jammed my thumb in the door. Thankfully, it wasn’t broken and I’m still able to type this post, but it was so painful and I’m still recovering. I also caught a cold right after that, as if my body had been waiting for the submission to get sick. It’s a recurring pattern for me to be ill after a deadline. It’s getting toucher as I get older :cry: :cry:. I need to exercise more to build up my strength and try to work ahead to avoid the last-minute rush (or learn to putting less effort into the work).</p>
+</section>
+<section id="preparing-for-the-next-step" class="level3">
+<h3 class="anchored" data-anchor-id="preparing-for-the-next-step">Preparing for the Next Step</h3>
+<p>I’ll be doing my phd defense this summer and starting the job hunt. At the end of 2024, I had an interview. My Cambly tutors were a huge help in preparing for general interview questions, although that interview was more about my research. One thing I realized is that promoting myself is quite challenging that I need to practice more.</p>
+<p>I also had the opportunity to give a lecture at my advisor’s class. Teaching was one of the reasons I wasn’t sure about becoming a professor, but that experience turned out to be better than I expected, even fun. The students were attentive and asked many interesting questions. I’m not sure if I’d enjoy teaching every week for a semester :sweat_smile:, but it was a good experience.</p>
+</section>
+<section id="goals-for-2025" class="level3">
+<h3 class="anchored" data-anchor-id="goals-for-2025">Goals for 2025</h3>
+<section id="research-1" class="level4">
+<h4 class="anchored" data-anchor-id="research-1">Research</h4>
+<ul>
+<li>Finalize the projects I’m currently working on and get them accepted.</li>
+<li>Possibly start a new project from the ideas I’ve been brainstorming.</li>
+</ul>
+</section>
+<section id="life-1" class="level4">
+<h4 class="anchored" data-anchor-id="life-1">Life</h4>
+<ul>
+<li><p>Get up early and exercise regularly in the morning. This is the most efficient way to build strength and stay productive.</p></li>
+<li><p>Keep a journal regularly.</p></li>
+<li><p>Reduce snacks between meals. At the end of 2024, our lab had a visitor who spent the whole day with me. He only ate meals and almost never snacked. Spending time with him made me realize that I have snacks more than I thought and it’s possible to live without them!</p></li>
+</ul>
+</section>
+<section id="career" class="level4">
+<h4 class="anchored" data-anchor-id="career">Career</h4>
+<ul>
+<li>Actively search for a job.</li>
+<li>Decide between Academia vs Industry vs Somewhere in between.</li>
+</ul>
+<p>Submitting another paper in the first half of the year and focusing on job searching in the second half will be my main focus of 2025. Wish me luck!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Graduate Life</category>
+  <guid>https://juppytt.github.io/posts/2024-review.html</guid>
+  <pubDate>Tue, 28 Jan 2025 12:27:37 GMT</pubDate>
+</item>
+<item>
+  <title>ACM CCS 2024 Reflection</title>
+  <link>https://juppytt.github.io/posts/ccs24.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had the privilege of presenting my work.</p>
+<section id="pre-conference-trip" class="level4">
+<h4 class="anchored" data-anchor-id="pre-conference-trip">Pre-Conference Trip</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/ccs-2024-gifts.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption><em>The gifts from Zhejiang university students</em></figcaption>
+</figure>
+</div>
+<p>Before heading to CCS, some phd students from Zhejiang university reached out to me to hang out together when they stop over in Seoul. I appreciated their offer and we had a short 5-hour trip in Seoul, visiting Gyoungbokgung Palace and Namsan tower. They even gave me gifts from their town :heart:. I’m so glad to make new friends from China and hope to see them again in the future.</p>
+</section>
+<section id="the-conference" class="level4">
+<h4 class="anchored" data-anchor-id="the-conference">The Conference</h4>
+<p><img src="https://juppytt.github.io/images/ccs-2024-museum1.jpg" class="img-fluid" style="width:80.0%"> <img src="https://juppytt.github.io/images/ccs-2024-museum2.jpg" class="img-fluid" style="width:80.0%"> <img src="https://juppytt.github.io/images/ccs-2024-beer.jpg" class="img-fluid" style="width:40.0%" alt="Salt Lake City beer was so good"></p>
+<p>The town was clean beautiful. The conference held a small tour event at a nearby museum. The scenery at the museum was so peaceful. The conference venue, while a bit small, also felt cozy, warm and welcoming.</p>
+</section>
+<section id="the-presentation" class="level4">
+<h4 class="anchored" data-anchor-id="the-presentation">The Presentation</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/ccs-2024-presentation.jpg" class="img-fluid figure-img"></p>
+<figcaption><em>The presentation session</em></figcaption>
+</figure>
+</div>
+<p>I presented my work, PeTAL, at the conference. I realized that the slides I prepared was fairly simple and easy to understand for broad audience, which many people appreciated. Perhaps this was because my first presentation was at Black Hat, and under my advisor’s guidance, I had learned to make slides as clear and easy as possible.</p>
+<p>After the presentation, I received several questions and had good discussions about kernel security research.</p>
+<p>It was also a pleasure meeting other phd students and professors on system security research. Connecting with people from around the world who share the same goals gave a strong sense of belonging to this community, across national and institutional boundaries.</p>
+<!-- #### Missing presenters
+I don't know this is a trend in recent conferences because this CCS
+was my second academic conference after CCS 2022, but about 20% of
+talks were missing the first author or all authors from the
+conference due to visa issue. It seems getting Visa in the US is more
+difficult is some countries so that they couldn't make it to the
+conference. Those talks were presented by someone else or replaced by
+a recorded video. I felt bad for those who couldn't join. For the
+recorded talks, people were so focused on the talk, which also felt
+we are heading towards something regardless of the nation boundaries.  -->
+</section>
+<section id="academy-vs.-industry" class="level4">
+<h4 class="anchored" data-anchor-id="academy-vs.-industry">Academy vs.&nbsp;Industry</h4>
+<p>Before attending CCS, I was firmly set on pursuing industry roles after my phd. However, this experience in CCS made me reconsider my decision. I felt a sense of belonging at the conferece, as if this is where I need to be. Leaving academia might make it harder to remain connected to this community. Right now, I feel that one or two more years as a phd or postdoc might be too short to fully immerse myself in academia. I’m still uncertain about what I’ll do after getting the degree, but CCS 2024 has definitely pulled me toward academia.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Graduate Life</category>
+  <guid>https://juppytt.github.io/posts/ccs24.html</guid>
+  <pubDate>Mon, 27 Jan 2025 11:37:42 GMT</pubDate>
+</item>
+<item>
+  <title>Black Hat USA 2024</title>
+  <link>https://juppytt.github.io/posts/bhusa24.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and Defcon 32) in Las Vegas. I presented my research on <a href="https://www.blackhat.com/us-24/briefings/schedule/#bypassing-arms-memory-tagging-extension-with-a-side-channel-attack-38669">Bypassing MTE with a side-channel attack</a>. I returned to Korea this morning (luckily, no jet lag) and am writing this post to share my experiences from Las Vegas before I forget them.</p>
+<section id="black-hat-usa-2024" class="level1">
+<h1>Black Hat USA 2024</h1>
+<section id="first-black-hat-experience" class="level2">
+<h2 class="anchored" data-anchor-id="first-black-hat-experience">First Black Hat experience</h2>
+<p>I’ve never been to Black Hat before, so I was very excited, especially since I was going to present for the first time in an international conference. There were lots of people, great talks, and free food and drinks :blue_heart:. Some gifts were also given: a Black Hat backpack, which I found very practical and useful, a tumblr with a straw, and a badge.</p>
+<p>I also attended the speaker VIP party prior to the conference, where I had the chance to meet many researchers and security experts in person. It was so exciting to meet professionals I’ve only seen in papers.</p>
+<p>For the sake of networking, I did try to connect with others, and I think it was quite successful. Since English is not my first language, it’s always challenging to communicate at such parties, but I was fairly able to communicate with others (shoutout to all my online English tutors!). However, I still feel like I need to expand my vocabulary to express my thoughts more clearly.</p>
+<p>Regarding the venue, it was huge, so I had to walk a lot. I was exhausted every day because I only brought shoes with hard soles. I should have brought more comfortable shoes for walking. The business hall had many company booths where I could get free t-shirts and other company swags. I wanted to visit more booths but couldn’t being busy with my talk and other things.</p>
+<p>Despite the venue’s size, the briefing sessions weren’t as crowded as I expected. I’ve heard that the briefings were usually packed (about 10 years ago), but the session halls had plenty of empty seats. I only saw people lining up once, for the “15 ways to Break your Copilot” talk (does everyone want to break Copilot?). But most talks weren’t even half full.</p>
+<p>Among the 5-6 talks I attended, some were really interesting and tackled the specific subjects I’m working on at the moment. It assured me that I was doing relevant research, but it also made me think I need to push our projects harder to complete them before someone else does :face_with_spiral_eyes:.</p>
+<p>I found LLM security talk by Richard Harang (Nvidia) very fascinating. Not only was the content excellent, but the way he presented was also very engaging.</p>
+</section>
+<section id="my-talk" class="level2">
+<h2 class="anchored" data-anchor-id="my-talk">My talk</h2>
+<p>As a first-time speaker, I was quite nervous about my talk, especially since Black Hat is a non-academic conference with a large and diverse audience. Before the conference, my advisor and I had many discussions about the content and visuals to make it easy to follow for the general audience. We also had multiple rounds of rehearsals.</p>
+<p>At the conference, before my talk, I had a scheduled interview with Dark Reading. I expected it to be a simple, brief session that would be published as an article later. But it turned out to be a news desk-style live interview with a camera crew! I was so nervous because I didn’t expect it to be <em>live</em>, and I hadn’t prepared for that at all. It was the most overwhelming experience I had on this trip. Well, I think I did my best, staying calm and answering the questions somehow… :sweat_smile:</p>
+<p>On the day of the presentation, I felt quite confident–maybe because I had practiced a lot and had already gone through the anxiety of the live interview. I was also kind of tired of being nervous since my talk was scheduled at the afternoon of the last day. So I thought, “I don’t care anymore. I just want to finish this.”</p>
+<p>The talk went successful. I think I even enjoyed the feeling of being on stage and having the audience’s attention (?!). The audience seemed engaged in my talk (no one appeared to be dozing off or leaving the hall). Some gave me positive feedback afterward, which I greatly appreciated and made me feel all the effort was worth it. I received many questions as well and was genuinely happy to see that my research was interesting to many people.</p>
+<p>Overall, I really enjoyed presenting at Black Hat USA and highly recommend it. I loved the feeling of being on stage and all the speaker privileges from BlackHat. I definitely want to present at Black Hat again!</p>
+</section>
+</section>
+<section id="other-experiences" class="level1">
+<h1>Other experiences</h1>
+<p>A few other things I did during the trip.</p>
+<section id="google-0x0g-party" class="level2">
+<h2 class="anchored" data-anchor-id="google-0x0g-party">Google 0x0g party</h2>
+<p>During this trip, I attended the Google 0x0g party (Google Vulnerability Reward Program party). It was my first time attending such an event, and there were so many security engineers from Google and various companies. The party featured programs with talks and events, but it was mainly about networking and socializing. I got to meet people around the industry, and overall, it was a great experience.</p>
+<p>Since I had given my talk about bypassing MTE the day before, I had some conversations about it. Opinions on MTE were quite divided across the industry, even within Google. Some were very positive about MTE, while others are quite negative, with some suggesting that MTE could be deprecated (?). This was interesting to me because, in academia, particularly in systems security, MTE is generally considered as a promising direction for future security, as long as the cost is not too high. The cost is indeed a significant issue, but the Pixel 8 series has demonstrated that <a href="https://googleprojectzero.blogspot.com/2023/11/first-handset-with-mte-on-market.html">MTE’s performance overhead is negligible</a>. I also have a paper under review that leverages MTE for attack mitigation. Unfortunately, it has gone through the review process at top-tier security conferences about 4-5 times, but no reviewer raised concerns about the feasibility of MTE as a defense so far.</p>
+<p>Another interesting thing I picked up, not only from this party but also from other people I’ve met in the past, is that high-end IOT device manufacturers are generally more positive about MTE. I’ve heard that Amazon is considering MTE for their future devices, and I also learned at this event that Meta is considering MTE for future Oculus devices. I wonder if this is because they are less concerned about the performance or other costs? In any case, it seems our researches on MTE is still highly relevant to the industry, and I’m excited to see how it will be adopted in the future.</p>
+</section>
+<section id="defcon-2024" class="level2">
+<h2 class="anchored" data-anchor-id="defcon-2024">Defcon 2024</h2>
+<p>Defcon felt a lot less organized than BlackHat. As a non-CTF player, I didn’t find much to do at Defcon. I mostly wandered around some of the villages and attended a talk about bypassing Copilot (again, by a different speaker). Then I spent some time at the Car Hacking Village, where my advisor was participating in the CTF :smile:. I just watched him play and worked on my own stuff. By that point, I didn’t have much social energy left, so I tried to focus on getting back to my research.</p>
+<p>I also attended the AIxCC closing ceremony, where the winners of the AIxCC competition were announced. I heard the competition was quite intense, with participants dedicating a lot of time and resources. I was happy to see few teams I know win the competition and move on to the final round. I really wanted to see AI beat previous techniques like fuzzing and symbolic execution, but I think we’re not there yet. Would love to see more progress in this area!</p>
+</section>
+<section id="hotels-pools" class="level2">
+<h2 class="anchored" data-anchor-id="hotels-pools">Hotels &amp; Pools</h2>
+<p>I stayed at Mandalay Bay during Black Hat, and Fontainebleau during Defcon. Both hotels were great, close to each conference venue, and had nice pools.</p>
+<p>Mandalay Bay was a classic hotel with a spacious room. It was a bit old-fashioned, but the room was clean and comfortable. The hotel was huge, and I had to walk a lot to get to the conference venue. I think I didn’t had enough time to explore the hotel during Black Hat, but I did enjoy their pool before checking out.</p>
+<p>Mandalay’s pool was really nice. On Friday, before we checked out, we went to the pool, and surprisingly, there weren’t many people. With various pools–wave pool, lazy river, and regular pool–it was fun to hop around and enjoy the sun. Compared to wave pools in Korea, Mandalay’s had smaller waves, but they allowed people to swim in the deeper areas. While this seemed a bit dangerous for kids and non-swimmers, I actually had fun swimming in the pool where my feet couldn’t touch the ground.</p>
+<p>We wanted to visit Mandalay Bay’s pool again after checking out, so we returned on Monday morning, paying $25 for per person for a pool pass :joy:. However, Monday was much more crowded, and I couldn’t enjoy the pool as much as I did on Friday. Maybe it was because the price was cheaper on Monday, or perhaps because Black Hat has ended and many people were staying at the hotel for vacation. Still, I enjoyed the pool and got a bit of tan :sunglasses:.</p>
+<p>Fontainebleau was much more luxurious than Mandalay Bay. I had seen some reviews mentioning that the rooms weren’t always well-cleaned, but our room was okay–maybe not perfect, but acceptable. The room was a bit smaller than at Mandalay Bay, but the facilities were much newer and cleaner. They even had USB-C ports on the wall!</p>
+<p>Fontainebleau’s pool was also nice. Although they didn’t have a variety of pools like Mandalay Bay, the pool was clean and not too crowded. They also offered free parasols for sunbeds! I had a great time swimming and relaxing at the pool.</p>
+<p>Despite its expensive image, some restaurants at Fontainebleau were good and reasonably priced, considering the usual costs in Las Vegas. Our favorite was a Hong Kong-style restaurant called “Washing Potato”. We had lunch there twice to enjoy dim sum and noodles :yum:.</p>
+</section>
+<section id="casinos" class="level2">
+<h2 class="anchored" data-anchor-id="casinos">Casinos</h2>
+<p>I thought I wouldn’t be a fan of casinos, but I actually liked playing the games. I played blackjack and roulette, mostly at Fontainebleau, and ended up broke :joy:. I realized that I’m not good at gambling because I’m too optimistic, which is great for research but not for gambling. In games like these, it’s obvious that you’ll lose in the long run, but I kept thinking I could win. Perhaps I should learn how to play poker instead (?!). Maybe next time! :smile:</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>I had a nice time in Las Vegas, although at times the place felt a bit too crazy for me. I loved my experience at Black Hat USA. I enjoyed presenting my research, meeting people, and learning about the latest security trends in research and industry. It definitely motivated me to work harder on my research and return to Las Vegas as a speaker again!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>MTE</category>
+  <category>BlackHat</category>
+  <guid>https://juppytt.github.io/posts/bhusa24.html</guid>
+  <pubDate>Wed, 14 Aug 2024 01:45:43 GMT</pubDate>
+</item>
+<item>
+  <title>A review of 2023: Surprises, Triumphs, and Failures</title>
+  <link>https://juppytt.github.io/posts/2023-review.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>It’s the end of 2023, and as I look back on the year, I can only say that it was a year full of research. I remember the days spent in front of the computer, reading papers, and conducting experiments. Of course, there were other events this year, including the creation of this blog (yay!). So, I decided it would be nice to write a review of 2023, to reflect on this year and to prepare for the next year.</p>
+<section id="surprises-of-2023" class="level2">
+<h2 class="anchored" data-anchor-id="surprises-of-2023">Surprises of 2023</h2>
+<p>Things that happened in 2023 that I didn’t expect.</p>
+<section id="a-new-research-topic---llm-security" class="level3">
+<h3 class="anchored" data-anchor-id="a-new-research-topic---llm-security">A new research topic - LLM security</h3>
+<p>The most significant technical surprise of 2023 might be the development of ChatGPT. I found ChatGPT and its use of plugins, along with its interaction with Non-ML programs, to be very interesting. I decided to investigate more on this topic and realized it was a new research area that I could work on. Delving into this topic, I somehow ended up understanding more about old-school security models and information flow control. This even led me to gain deeper understanding on the security papers I read previously. Currently working on other projects, but I am eager to continue on this topic as soon as I finish them!</p>
+</section>
+<section id="new-research-collaboration." class="level3">
+<h3 class="anchored" data-anchor-id="new-research-collaboration.">New research collaboration.</h3>
+<p>This year, I was fortunate to have a new collaboration with excellent researchers to enhance the previously rejected paper. I am very proud of the work we did together and hope that it will be accepted. It was a great experience. Lesson learned: Reaching out brings new opportunities.</p>
+</section>
+<section id="another-new-research-topic---arm-mte-side-channel" class="level3">
+<h3 class="anchored" data-anchor-id="another-new-research-topic---arm-mte-side-channel">Another new research topic - ARM MTE side-channel</h3>
+<p>From the previous collaboration, I also got a chance to work on a new research topic: ARM MTE side-channel (officially disclosed this month!) I am very excited on this project, and I hope that we can complete it with a good result.</p>
+</section>
+</section>
+<section id="triumphs-of-2023" class="level2">
+<h2 class="anchored" data-anchor-id="triumphs-of-2023">Triumphs of 2023</h2>
+<p>Things that I am proud of in 2023.</p>
+<section id="morning-routine" class="level3">
+<h3 class="anchored" data-anchor-id="morning-routine">Morning routine</h3>
+<p>I have been trying to wake up early for a long time. Starting a day early is a common advice for productivity, and for me, it was about avoiding the morning traffic jam in Seoul. The only working solution was the morning exercise routine. I enjoyed morning swimming from March to November and switched to yoga from December. This habit allows me to arrive at the lab earlier than others and have my own time focusing on my work. I’m very pleased with this routine and hope to continue it next year. I believe no one who knows me would believe that I am now a morning person. Still, I ocassionally oversleep, so my goal for the next year is to establish a more consistent morning routine.</p>
+</section>
+<section id="new-blog" class="level3">
+<h3 class="anchored" data-anchor-id="new-blog">New blog</h3>
+<p>I launched this blog this summer. Although I haven’t written much yet, it is good to have a place to write. I admit that I am still shy about sharing my ideas publicly, and I haven’t managed to write regularly. However, I hope to write more in the next year.</p>
+</section>
+<section id="studying-english" class="level3">
+<h3 class="anchored" data-anchor-id="studying-english">Studying English</h3>
+<p>I re-joined the English speaking group I participated years ago and felt my English has quite improved. I consistently took italki lessons as well. One day, I accidentally joined a group class for C1 level students. The students really challenged me, letting me realize that I still have a long way to go.</p>
+</section>
+</section>
+<section id="unfulfilled-goals-of-2023" class="level2">
+<h2 class="anchored" data-anchor-id="unfulfilled-goals-of-2023">Unfulfilled goals of 2023</h2>
+<p>Things that I wanted to do in 2023 but failed to do so.</p>
+<section id="getting-paper-accepted" class="level3">
+<h3 class="anchored" data-anchor-id="getting-paper-accepted">Getting paper accepted</h3>
+<p>The paper I submitted this year faced rejection, despite I believed I had done everything I could. It was a puzzling result. My advisor reassured me that it was a good paper and if I keep working on it, it would be accepted one day.. Anyway, I quickly re-submitted to another venue. After that, I realized my previous rejection was due to failing to satisfy one reviewer’s seemingly trivial demands. It is painful to go through another round of review process, and it was a worthwhile lesson learned. With several other interesting projects in progress, I am optimistic that I’ll have more opportunities to achieve this goal in the coming year.</p>
+</section>
+<section id="others" class="level3">
+<h3 class="anchored" data-anchor-id="others">Others</h3>
+<ul>
+<li><p>Reading books: Started multiple books but failed to finish any of them..;-)</p></li>
+<li><p>Consistent wake-up time: My sleep schedule is still inconsistent. Establishing a consistent sleep schedule is next year’s goal.</p></li>
+<li><p>Being nice to others: This one wasn’t actually planned, but I realized this year it would be beneficial to everyone if I am a bit nicer.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Graduate Life</category>
+  <guid>https://juppytt.github.io/posts/2023-review.html</guid>
+  <pubDate>Sun, 31 Dec 2023 13:37:51 GMT</pubDate>
+</item>
+<item>
+  <title>Series: Graduate School Productivity - Introduction</title>
+  <link>https://juppytt.github.io/posts/series-productivity.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Time flies in graduate school! Having spent 3.5 years as a PhD student, one thing I’ve learned is that I should be super-efficient in managing my time and energy.</p>
+<p>I’m not someone you’d label as “born productive”. I’m a typical “P”-type person according to <a href="https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator">Myers-Briggs Type Indicator (MBTI)</a>–indicative of a spontaneous and flexible nature. As many P-type people do, I’m prone to distraction and have difficulty in sticking to routines. Daily to-do lists or planners are ways to self-torture by confining free will into a fixed schedule. I also sleep a lot and have a hard time waking up early.</p>
+<p>In my undergraduate years, I’d often find myself pulling all-nighters to finish assignment projects and study for the exams. Yet, despite this approach, I managed to get average grades and was lucky enough to join <a href="https://compsec.snu.ac.kr/">an awesome research group</a> for my PhD.</p>
+<p>Research, however, is a different game. It demands consistent and sustained effort–ideation, problem-solving, experimentation, and writing a paper. Especially when you are targeting top-tier conferences, they would require creativity and novelty in your work, which cannot be achieved over a single night. Speed is essential too; the review process takes months and there’s always a chance that you are not the only one who thought of the same idea.</p>
+<p>What’s more, graduate life is not only about research. There are classes, seminars, TAs, meetings, conferences, paperwork, and so on. Of course, you also have to study English and maintain your health and social life.</p>
+<p>In the first two years of PhD, I was either busy working overnight to meet the deadlines or wasting my time on random things that intrigued my interest yet were not so important. I was constantly stressed out and felt that I was not productive enough. I was also nervous about my academic performance and my future career since I was not sure if I could finish my PhD with good publications.</p>
+<p>In 2022, my third year, I decided to bring some change to my life. I experimented with various productivity strategies from experts to find what worked for me. Today, while I’m still in exploration, I discovered several ways that boost my productivity. While there’s no assurance that they’ll bring me a list of high-quality papers, at least I feel I have done my best of what I can do. No more regrets.</p>
+<p>Through this series, I’ll share some productivity insights that have proven to work for me. I hope this series helps some readers who are struggling with their productivity concerns.</p>
+<p>Side Note: Took the MBTI test again and I’m now 57% J-type. I guess I’m going in the right direction? :)</p>
+
+
+
+ ]]></description>
+  <category>Graduate Life</category>
+  <category>Productivity</category>
+  <guid>https://juppytt.github.io/posts/series-productivity.html</guid>
+  <pubDate>Wed, 23 Aug 2023 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Hugging (Evil) Face: Security issues in Hugging Face</title>
+  <link>https://juppytt.github.io/posts/hugging-evil-face.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://juppytt.github.io/images/devil-hugging-face.png" class="img-fluid" style="width:30.0%"> ### Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of the popular service for ML/LLM application is <a href="https://huggingface.co/">Hugging Face</a>. In this post, I would like to describe the potential security risks in current Hugging Face, especially in <a href="https://huggingface.co/spaces">Spaces</a>.</p>
+<section id="hugging-face" class="level3">
+<h3 class="anchored" data-anchor-id="hugging-face">Hugging Face</h3>
+<p><a href="https://huggingface.co/">Hugging Face</a> is a AI community that provides a lot of machine learning models, datasets, and applications. Users can contribute their own models, datasets, and demo applications (i.e., Spaces) to the community. This community has been growing rapidly since the advent of the transformer model.</p>
+<p>Specifically, <a href="https://huggingface.co/spaces"><em>Spaces</em></a> offers a easy-to-user environment to manage and host demo applications for models. Users can upload and deploy Spaces, which is then served as MLaaS (Machine Learning as a Service) from Hugging Face’s server. Spaces support various interface SDKs (Gradio, Streamlit) and execution environment options with various GPU accelerators.</p>
+</section>
+<section id="security-risks-on-spaces" class="level3">
+<h3 class="anchored" data-anchor-id="security-risks-on-spaces">Security Risks on Spaces</h3>
+<p>Despite its usability, Spaces incorporates several vulnerable designs, which may potentially lead to security issues.</p>
+<section id="vuln.-design-1-unrestricted-app-logics" class="level4">
+<h4 class="anchored" data-anchor-id="vuln.-design-1-unrestricted-app-logics">Vuln. Design 1: Unrestricted App Logics</h4>
+<p>First, Spaces allow users to upload and distribute any kind of apps. This unrestricted deployment introduces potential unsafe data-flows between the user and the app (or the execution environment). Specifically, <em>arbitrary code execution</em> and <em>information leakage</em>.</p>
+</section>
+<section id="issue-1-arbitrary-code-execution" class="level4">
+<h4 class="anchored" data-anchor-id="issue-1-arbitrary-code-execution">Issue 1: Arbitrary Code Execution</h4>
+<p>By its nature, Spaces allow <a href="TODO">arbitrary code execution</a> from app developers to Hugging Face server. Developers can run any app on Hugging Face’s server just by uploading the app to Spaces. Moreover, if the app contains data-flows from user input to executable data (e.g., user-provided functions or shell commands), it would allow arbitrary code executions <em>from app users to the server</em>. If the app is publicly available, the arbitrary code execution functionality would be exposed to unspecified and anonymous users.</p>
+<p>With proper containerization, the effect of arbitrary code execution is limited to the sandboxed environment. However, if a container escape vulnerability might allow the attacker to attempt container escape attack, which would further enable attacks on the host server.</p>
+<p>Arbitrary code execution also allows attackers to change app’s behavior or hijack the goal. One example is bypassing any security measurement (e.g., safeguard prompts, throughput). With arbitrary execution, the attackers can delete or replace the safeguard prompts passed to the model, or they can nullify the restrictions on users such as throughput.</p>
+<p>Another example is replacing the model used by the app with different model (e.g., backdoor-injected model, model for different tasks). Considering high-end GPU acceleration environment charge extra costs for the app developer, such attempts might also yield financial loss.</p>
+<section id="real-world-example" class="level5">
+<h5 class="anchored" data-anchor-id="real-world-example">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/juppytt/shell">shell</a> is a simple app that takes user input and passes it to a langchain tool called <code>ShellTool</code>, which runs the input as a shell command. By sending commands, users can explore or manipulate the execution environment. For instance, sending <code>ls</code> as the command input would return the actual file in the containerized environment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/code-exec-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption><em>arbitrary shell command execution in Hugging Face Spaces</em></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="issue-2-information-leakage-between-app-and-user" class="level4">
+<h4 class="anchored" data-anchor-id="issue-2-information-leakage-between-app-and-user">Issue 2: Information Leakage between App and User</h4>
+<p>Many apps in Spaces operate with numerous user-provided sensitive data. Apps require user credentials (e.g., API keys, ID, password) as a delegate for API uses. Apps require personal information (e.g., name, email, location) to provide customized services. When processing such data, apps should be safely designed to protect personal information. Recent privacy regulations (e.g., <a href="https://gdpr.eu/tag/chapter-3/">GDPR</a>, <a href="https://oag.ca.gov/privacy/ccpa">CCPA</a>) consider any user-provided input passed to web apps as sensitive data and enforces that appsq should not store nor track such data without user content.</p>
+<p>Lacking restriction on app internal logics may allow dataflow from the users to untrusted channels. When user data is passed to an app, the app should carefully process the data for the intended operations only. However, as Spaces allow any apps with any logic to be deployed, we cannot assure whether the apps are properly handling user data.</p>
+<section id="real-world-example-1" class="level5">
+<h5 class="anchored" data-anchor-id="real-world-example-1">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/jeevavijay10/nlp-goemotions-senti-pred">nlp-goemotions-senti-pred</a> is a demo app for a sentiment prediction model, which allows user to input text and receive sentiment predictions from the model. For instance, if a user inputs “I trust you”, the app will return “agreement” as the predicted sentiment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/app-leak-1.png" class="img-fluid figure-img"></p>
+<figcaption><em>nlp-goemotions-senti-pred predicts sentiment from input sentence</em></figcaption>
+</figure>
+</div>
+<p>However, there is a hidden functionality in this app that logs every user input and updates it to a public Huggingface dataset maintained by the app-developer. Consequently, every text provided by users is leaked and publicly exposed. The app does not inform users about this background activity, leaving them unaware of their data being logged into a dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/app-leak-2.png" class="img-fluid figure-img"></p>
+<figcaption><em>User input is silently logged into another dataset</em></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="vuln.-design-2-missing-isolation-between-requests" class="level4">
+<h4 class="anchored" data-anchor-id="vuln.-design-2-missing-isolation-between-requests">Vuln. Design 2: Missing Isolation between Requests</h4>
+<p>Another vulnerable design in Spaces is the lack of sufficient isolation between user requests. Currently, Spaces uses a single container when running an app. Therefore, every request made to the app, regardless of the sender, is executed within the same container environment. This can lead to unsafe data-flows between users, such as information leakage.</p>
+<section id="issue-3-information-leakage-between-users" class="level5">
+<h5 class="anchored" data-anchor-id="issue-3-information-leakage-between-users">Issue 3: Information Leakage between Users</h5>
+<p>As Spaces provide a single container per app, it is crucial to ensure that user data is not shared between requests. If an app has a data-flow that stores user input to global states and then loads those global states into user-visible outputs, the app becomes vulnerable to user information leakage.</p>
+<p>To illustrate this vulnerability, let’s take an example using <a href="https://huggingface.co/spaces/juppytt/shell">shell</a>. If a user executes the command <code>echo "12345" &gt; file &amp;&amp; ls</code>, the app will create a file named <code>file</code> with <code>12345</code> and list the existing files in the current directory.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/user-leak-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption><em>Spaces allow apps to store user data as a global state (e.g., file)</em></figcaption>
+</figure>
+</div>
+<p>Then, another user can access the file by sending commands. An arbitrary user can read <code>file</code> by passing <code>cat file</code> to the app, thus leaking the data provided by the previous user.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/user-leak-3.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption><em>Sharing a container between requests allows users to leak other users’ data</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="real-world-example-2" class="level5">
+<h5 class="anchored" data-anchor-id="real-world-example-2">Real-World Example</h5>
+<p><a href="https://huggingface.co/spaces/awacke1/CB-GR-Chatbot-Blenderbot">Chatbot-Blenderbot</a> is a chat bot app that, upon receiving a user request, runs a model and saves every user input and model response to a file. The entire file, including inputs from other users, is then displayed to the user. However, this app does not notify users that their input will be logged and exposed to other users. Users only become aware that their input is being shared with others after they have already sent their data to the app.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://juppytt.github.io/images/user-leak-4.png" class="img-fluid figure-img"></p>
+<figcaption><em>Chatbot-Blenderbot exposes every input from different users without user consent</em></figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>I reported these issues to Hugging Face security team through email and <a href="https://discuss.huggingface.co/t/per-user-isolation-in-spaces/43369">Hugging Face forum</a>. They didn’t replied the email but did show interest in addressing the issues through the forum. Unfortunately, they have not yet provided any working solutions or mitigation measures.</p>
+<p>As we are in the initial stage of ML/LLM app development, there are several security vulnerabilities similar to those commonly studied in non-ML programs. One good news is that current ML/LLM apps are mostly for performing simple tasks like text/image transformation or chatbot functionalities, which are less prone to severe security vulnerabilities. Nonetheless, as this field continues to develop rapidly, applications will become complex, and a wide range of security issues are likely to emerge.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>Hugging Face</category>
+  <guid>https://juppytt.github.io/posts/hugging-evil-face.html</guid>
+  <pubDate>Tue, 18 Jul 2023 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Security-hardening ARM64 Linux kernel</title>
+  <link>https://juppytt.github.io/posts/linux-arm64-hardening.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="intro" class="level3">
+<h3 class="anchored" data-anchor-id="intro">Intro</h3>
+<p>In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting security-critical objects and pointers leveraging the ARM’s upcoming hardware security features (<a href="https://events.static.linuxfound.org/sites/events/files/slides/slides_23.pdf">PAC</a> and <a href="https://developer.arm.com/documentation/102925/latest/">MTE</a>).</p>
+<p>Building such a kernel hardening system required me to tackle several key issues:</p>
+<ol type="1">
+<li>Cross-compiling the kernel (X86 -&gt; ARM64)</li>
+<li>Cross-module kernel analysis</li>
+<li>Linux kernel instrumentation</li>
+<li>Connecting the cross-module analysis with kernel build system.</li>
+<li>Setting up ARM64 environments for both emulation and a real device (Raspberry Pi 4B).</li>
+</ol>
+<p>As someone who was not well familar with kernel and compiler, each of these issues presented quite a challenge. So I thought it would be nice to write about each of the issues to help others facing similar issues.</p>
+</section>
+<section id="environment" class="level3">
+<h3 class="anchored" data-anchor-id="environment">0. Environment</h3>
+<p>My environment was as follows:</p>
+<ul>
+<li><p>Host Environment: Linux 5.15 Ubuntu 20.04.3</p></li>
+<li><p>Clang/LLVM: 11.0.0 and 14.0.0</p></li>
+<li><p>GNU Toolchain: <a href="https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-mingw-w64-i686-aarch64-none-linux-gnu.tar.xz?rev=06b6c36e428c48fda4b6d907f17308be&amp;hash=5C6B156A536294706E14D40D8110CA03A086D63C">aarch64-none-linux-gnu</a></p></li>
+<li><p>Qemu 5.1.0</p></li>
+<li><p>Raspberry Pi 4B (4GB)</p></li>
+</ul>
+</section>
+<section id="building-kernel" class="level3">
+<h3 class="anchored" data-anchor-id="building-kernel">1. Building Kernel</h3>
+<p>As the target system is AArch64 architecture and the host system is x86_64, the kernel needs to be cross-compiled from x86_64 to AArch64. At first, I expected Clang/LLVM would be able to do this job with <code>-march</code> option, as it is natively a cross-compiler. However, there was some problems related to <a href="https://clang.llvm.org/docs/CrossCompilation.html#cross-compilation-issues">the known cross compilation issues of Clang/LLVM</a>. As described in <a href="https://github.com/ClangBuiltLinux/linux/wiki/Steps-for-compiling-the-kernel-with-Clang">ClangBuiltLinux</a> and <a href="https://blog.xiexun.org/compile-linux-llvm.html">a blog</a>, using ARM’s GNU toolchain (aarch64-none-linux-gnu) solves the problem.</p>
+<p>The final script I used to cross-compile the kernel:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash -ve</span></span>
+<span id="cb1-2"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PROJ_DIR</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PWD}</span>/..</span>
+<span id="cb1-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_BUILD</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PROJ_DIR}</span>/build/bin</span>
+<span id="cb1-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTIL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>~/util/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin</span>
+<span id="cb1-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PATH</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BINUTIL}</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$PATH</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${LLVM_BUILD}</span></span>
+<span id="cb1-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_COMPILER</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>clang</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KERNEL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>kernel8</span>
+<span id="cb1-9"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KCFLAGS</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8.5-a "</span></span>
+<span id="cb1-10"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pushd</span> ../linux-5.5</span>
+<span id="cb1-11">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTILS_TARGET_PREFIX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>aarch64-none-linux-gnu <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-12">      ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb1-13">      HOSTCC=clang CC=clang <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-j12</span></span>
+<span id="cb1-14"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">popd</span></span></code></pre></div></div>
+</section>
+<section id="cross-module-kernel-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="cross-module-kernel-analysis">2. Cross-module kernel analysis</h3>
+<p>To identify every instructions accessing the protection target, a cross-module data-flow analysis is performed. Here, module indicates a single C file. One approach is to use <a href="https://github.com/travitch/whole-program-llvm">wllvm</a> to generate a single LLVM bitcode file of the entire kernel (i.e., <code>vmlinux.bc</code>). Here, some kernel modules containing duplicate symbol names may occur linking errors. Such files can be manually excluded from <code>vmlinux.bc</code> as explained in <a href="https://blog.xiexun.org/compile-linux-llvm.html">this blog</a>, while such modules will be excluded from the analysis.</p>
+<p>Once <code>vmlinux.bc</code> is generated, a custom LLVM analysis pass can be applied to it, enabling the cross-module analysis. The analysis pass is implemented as a LLVM pass plugin, which is loaded by <code>opt</code> command. Given a list of protection target (e.g., struct types, named global variables), the analysis pass identifies the memory access instructions (i.e., load/store, copy, alloc/free) that access the protection target.</p>
+</section>
+<section id="linux-kernel-instrumentation" class="level3">
+<h3 class="anchored" data-anchor-id="linux-kernel-instrumentation">3. Linux Kernel Instrumentation</h3>
+<p>The instrumentation is applied during kernel build on the instructions identified from the analysis. The LLVM tutorial on <a href="https://llvm.org/docs/WritingAnLLVMPass.html">writing a LLVM pass</a> introduces writing a LLVM pass as a plugin tool for <code>opt</code> command. However, the kernel build system uses <code>CC</code> (<code>clang</code>) and <code>LD</code> (<code>lld</code>) to build the kernel, instead of <code>opt</code>.</p>
+<p>One approach is <code>-Xclang</code> option to pass the instrumentation pass as a Clang pass plugin. However, for some technical reasons that I cannot recall precisely, I did not choose this approach. It may have been due to uncertainty regarding whether every module would be built with the instrumentation pass.</p>
+<p>Another approach that I took is to implement the instrumentation pass as a sanitizer, which is well-supported by both Linux and clang with <code>-fsanitize=&lt;sanitizer-name&gt;</code> option. Sanitizers are implemented as LLVM passes and are automatically loaded by <code>clang</code>. Existing sanitizers can be found in <code>llvm-project/llvm/lib/Transforms/Instrumentation</code>.</p>
+<p>To add a new sanitizer, several modifications were made to Clang/LLVM and this change can be found in <a href="https://github.com/juppytt/llvm-temp-sanitizer">my github repo</a>.</p>
+<p>The final script to build the kernel with the instrumentation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash -ve</span></span>
+<span id="cb2-2"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PROJ_DIR</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PWD}</span>/..</span>
+<span id="cb2-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_BUILD</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PROJ_DIR}</span>/build/bin</span>
+<span id="cb2-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTIL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>~/util/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin</span>
+<span id="cb2-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PATH</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${LLVM_BUILD}</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BINUTIL}</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$PATH</span></span>
+<span id="cb2-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_COMPILER</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>clang</span>
+<span id="cb2-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KERNEL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>kernel8</span>
+<span id="cb2-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KCFLAGS</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8.5-a -fsanitize=kdfi_instrument "</span></span>
+<span id="cb2-9"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pushd</span> ../linux-5.5-kdfi</span>
+<span id="cb2-10">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTILS_TARGET_PREFIX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>aarch64-none-linux-gnu <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-11">    ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb2-12">    HOSTCC=clang CC=clang <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-j12</span></span>
+<span id="cb2-13"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">popd</span></span></code></pre></div></div>
+</section>
+<section id="connecting-analysis-and-instrumentation" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-analysis-and-instrumentation">4. Connecting Analysis and Instrumentation</h3>
+<p>Now the kernel can be analyzed and instrumented, but there is one more issue to solve: how do we connect the analysis and the instrumentation? A single LLVM pass for both analysis and instrumentation would be ideal. However, the kernel, as most C/C++ projects do, builds each module separately and links them together, which makes it difficult to perform cross-module analysis during kernel build.</p>
+<p>To address this, I came up with a two-pass approach: One pass is for cross-module analysis that extracts the list of instructions from a pre-compiled whole-kernel bitcode (<code>vmlinux.bc</code>). Another is for instrumentation that is applied to each module to perform instrumentation for the previous identified instructions.</p>
+<p>This requires a way to share the list of instructions between the two LLVM passes. Here, I simply used a simple text file containing raw dump of instructions in LLVM IR format. Each instruction is accompanied by minimal metadata such as function name and the instruction’s order in the function to accurately specify the intended instruction. While this method works, I believe there are more elegant ways to share the instructions between two passes.</p>
+<p>Additionally, to avoid generating an excessively large file by dumping every instruction that need to be instrumented, a simple filter in the analysis pass excludes dumping instructions if they can be identified within each module. Consequently, the instrumentation pass also performs a simple intra-module analysis to identify the instructions filtered out from the list.</p>
+</section>
+<section id="arm64-environment-setup" class="level3">
+<h3 class="anchored" data-anchor-id="arm64-environment-setup">5. Arm64 Environment Setup</h3>
+<p>I used two types of testing environments: QEMU and Raspberry Pi 4B (4GB). QEMU is used for debugging and security evaluation, while Raspberry Pi is used for performance evaluation.</p>
+<p>For the QEMU environment, I used <a href="https://buildroot.org/">buildroot</a> (v2022.02.03) to build a root file system. The entire command to run QEMU is as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LINUX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span></span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> ~/util/qemu-5.1.0/aarch64-softmmu/qemu-system-aarch64 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-machine</span> virt,mte=on <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-cpu</span> max <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-nographic</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-smp</span> 1 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-hda</span> /home/juhee/project/ppac/buildroot-2022.02.3/output/images/rootfs.ext4 <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-kernel</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$LINUX</span>/arch/arm64/boot/Image <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-append</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"console=ttyAMA0 root=/dev/vda oops=panic panic_on_warn=1 panic=-1 ftrace_dump_on_oops=orig_cpu debug earlyprintk=serial slub_debug=UZ nokaslr "</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-m</span> 2G <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-net</span> user,hostfwd=tcp::10023-:22  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb3-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-net</span> nic <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-s</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-S</span></span></code></pre></div></div>
+<p>The emulated kernel can then be debugged with aarch64-none-linux-gnu-gdb.</p>
+<p>To build the kernel for Raspberry Pi, I used the official Raspberry Pi <a href="https://github.com/raspberrypi/firmware/tree/master">firmware</a> for the boot files and modules. The following script builds and prepares the boot files and modules of the instrumented kernel:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash -ve</span></span>
+<span id="cb4-2"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PROJ_DIR</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PWD}</span></span>
+<span id="cb4-3"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_BUILD</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${PROJ_DIR}</span>/build/bin</span>
+<span id="cb4-4"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTIL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>~/util/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin</span>
+<span id="cb4-5"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">PATH</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${LLVM_BUILD}</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BINUTIL}</span>:<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$PATH</span></span>
+<span id="cb4-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">LLVM_COMPILER</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>clang</span>
+<span id="cb4-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KERNEL</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>kernel8</span>
+<span id="cb4-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">export</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">KCFLAGS</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-fsanitize=kdfi_instrument "</span></span>
+<span id="cb4-9"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pushd</span> linux-rpi-6.0-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span></span>
+<span id="cb4-10">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTILS_TARGET_PREFIX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>aarch64-none-linux-gnu <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-11">        ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-12">        CFLAGS=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8-a+crc -mtune=cortex-a72"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-13">        CXXFLAGS=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8-a+crc -mtune=cortex-a72"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-14">        HOSTCC=clang CC=clang <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-j10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-15">        bindeb-pkg Image modules dtbs</span>
+<span id="cb4-16">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">BINUTILS_TARGET_PREFIX</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>aarch64-none-linux-gnu <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-17">        ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-18">        HOSTCC=clang CC=clang <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-j10</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-19">        CFLAGS=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8-a+crc -mtune=cortex-a72"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-20">        CXXFLAGS=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"-march=armv8-a+crc -mtune=cortex-a72"</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-21">        INSTALL_MOD_PATH=../modules-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\</span></span>
+<span id="cb4-22">        modules_install</span>
+<span id="cb4-23"></span>
+<span id="cb4-24">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cp</span> arch/arm64/boot/Image ../boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/kernel8.img</span>
+<span id="cb4-25">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cp</span> arch/arm64/boot/dts/overlays/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.dtbo ../boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/overlays</span>
+<span id="cb4-26">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cp</span> arch/arm64/boot/dts/overlays/README ../boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/overlays</span>
+<span id="cb4-27">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cp</span> arch/arm64/boot/dts/broadcom/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.dtb ../boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/</span>
+<span id="cb4-28"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">popd</span></span>
+<span id="cb4-29"></span>
+<span id="cb4-30"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-cvf</span> modules-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>.tar.gz modules-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/</span>
+<span id="cb4-31"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-cvf</span> boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>.tar.gz boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$2</span>/ <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.deb</span></code></pre></div></div>
+<p>The boot files and modules can be sent to the Raspberry Pi with network, and then can be installed with the following script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/bin/bash -ve</span></span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rm</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.deb</span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-xvf</span> boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span>.tar.gz</span>
+<span id="cb5-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> rm <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-r</span> /boot/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb5-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> dpkg <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> linux-headers-<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.deb linux-image-<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.deb linux-libc-<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.deb</span>
+<span id="cb5-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-r</span> boot-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span>/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span> /boot/</span>
+<span id="cb5-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.txt /boot/</span>
+<span id="cb5-8"></span>
+<span id="cb5-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tar</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-xvf</span> modules-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span>.tar.gz</span>
+<span id="cb5-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sudo</span> cp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-r</span> modules-<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$1</span>/lib/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span> /lib/modules/</span></code></pre></div></div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This post described the issues I faced when building a security hardening system for the Linux kernel. I hope this post will be helpful for others facing similar issues.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Research</category>
+  <category>Kernel</category>
+  <category>LLVM</category>
+  <category>QEMU</category>
+  <guid>https://juppytt.github.io/posts/linux-arm64-hardening.html</guid>
+  <pubDate>Sat, 08 Jul 2023 15:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

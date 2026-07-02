@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Postdoctoral researcher, CompSec Lab, Seoul National University.">
+<meta name="description" content="Notes on security research and graduate life.">
 
-<title>Juhee Kim</title>
+<title>writing — Juhee Kim – Juhee Kim</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -55,9 +57,67 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-</head>
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="Juhee Kim" href="blog.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light">
 
@@ -77,11 +137,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
 <span class="menu-text">writing</span></a>
   </li>  
 </ul>
@@ -114,36 +174,27 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-   
-  <ul>
-  <li><a href="#publications" id="toc-publications" class="nav-link active" data-scroll-target="#publications">Publications</a></li>
-  <li><a href="#talks" id="toc-talks" class="nav-link" data-scroll-target="#talks">Talks</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience">Experience</a></li>
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
-  </ul>
-</nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QmxhY2tIYXQ=">BlackHat <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R3JhZHVhdGUlMjBMaWZl">Graduate Life <span class="quarto-category-count">(4)</span></div><div class="category" data-category="SHVnZ2luZyUyMEZhY2U=">Hugging Face <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S2VybmVs">Kernel <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExWTQ==">LLVM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TVRF">MTE <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T3BlbkNsYXc=">OpenClaw <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvZHVjdGl2aXR5">Productivity <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UUVNVQ==">QEMU <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVzZWFyY2g=">Research <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Juhee Kim</h1>
+<h1 class="title">writing</h1>
 </div>
 
 <div>
   <div class="description">
-    Postdoctoral researcher, CompSec Lab, Seoul National University.
+    Notes on security research and graduate life.
   </div>
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -155,48 +206,213 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="cv-lead">
-<p>I am a postdoctoral researcher at <a href="https://compsec.snu.ac.kr/">CompSec Lab</a>, Department of Electrical and Computer Engineering, Seoul National University. I received my Ph.D.&nbsp;from the same research group, advised by <a href="https://lifeasageek.github.io/">Byoungyoung Lee</a>.</p>
-</div>
-<p>My research background spans <strong>system security</strong> from high-level user programs to low-level operating systems and hardware, with a focus on identifying new attacks and designing practical defenses. I am currently working on <strong>securing LLM-based agent systems from a system security perspective</strong>.</p>
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<ul>
-<li><a href="https://www.usenix.org/conference/usenixsecurity26/presentation/kim-juhee-agentic"><strong>SoK: Attack and Defense Landscape of Agentic AI Systems</strong></a> <em>(to appear)</em> <br><strong>Juhee Kim</strong>, Wenbo Guo, and Dawn Song <br>USENIX Security Symposium (<strong>Security</strong>) 2026</li>
-<li><strong>DMGuard: Safeguarding Kernels from Physical Page Use-After-Free Vulnerabilities</strong> <em>(to appear)</em> <br><strong>Juhee Kim*</strong>, Jaeyoung Chung*, Dae R. Jeong, and Byoungyoung Lee (* equal contribution) <br>USENIX Security Symposium (<strong>Security</strong>) 2026</li>
-<li><a href="https://compsec.snu.ac.kr/papers/juhee-pfi.pdf"><strong>Prompt Flow Integrity to Prevent Privilege Escalation in LLM Agents</strong></a> <br><strong>Juhee Kim*</strong>, Woohyuk Choi*, and Byoungyoung Lee (* equal contribution) <br>Preprint 2025</li>
-<li><a href="https://arxiv.org/abs/2406.08719"><strong>TikTag: Breaking ARM’s Memory Tagging Extension with Speculative Execution</strong></a> <br><strong>Juhee Kim</strong>, Jinbum Park, Sihyeon Roh, Jaeyoung Chung, Youngjoo Lee, Taesoo Kim, and Byoungyoung Lee <br>IEEE Symposium on Security and Privacy (<strong>S&amp;P</strong>) 2025</li>
-<li><a href="https://compsec.snu.ac.kr/papers/juhee-petal.pdf"><strong>PeTAL: Ensuring Access Control Integrity against Data-only Attacks on Linux</strong></a> <br><strong>Juhee Kim</strong>, Jinbum Park, Yoochan Lee, Chengyu Song, Taesoo Kim, and Byoungyoung Lee <br>ACM Conference on Computer and Communications Security (<strong>CCS</strong>) 2024</li>
-<li><a href="https://compsec.snu.ac.kr/papers/ahmad-chancel.pdf"><strong>CHANCEL: Efficient Multi-client Isolation Under Adversarial Programs</strong></a> <br>Adil Ahmad, <strong>Juhee Kim</strong>, Jaebaek Seo, Insik Shin, Pedro Fonseca, and Byoungyoung Lee <br>Network and Distributed System Security Symposium (<strong>NDSS</strong>) 2021</li>
-</ul>
-</section>
-<section id="talks" class="level2">
-<h2 class="anchored" data-anchor-id="talks">Talks</h2>
-<ul>
-<li><strong>Bypassing ARM’s Memory Tagging Extension with a Side-Channel Attack</strong> <br><a href="https://www.blackhat.com/us-24/briefings/schedule/#bypassing-arms-memory-tagging-extension-with-a-side-channel-attack-38669">Black Hat USA 2024</a> · <a href="https://research.samsung.com/sstf">Samsung Security Tech Forum 2024</a> · <a href="https://hardwear.io/netherlands-2024/speakers/juhee-kim.php">Hardware.io NL 2024</a></li>
-</ul>
-</section>
-<section id="experience" class="level2">
-<h2 class="anchored" data-anchor-id="experience">Experience</h2>
-<ul>
-<li><strong>Postdoctoral Researcher</strong>, CompSec Lab, Seoul National University · <em>Mar 2026 – present</em></li>
-<li><strong>Software Engineering Intern</strong>, Meta, London, UK · <em>Jun 2025 – Sep 2025</em></li>
-</ul>
-</section>
-<section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
-<ul>
-<li><strong>Ph.D.</strong>, Electrical and Computer Engineering, Seoul National University · <em>2020 – 2026</em></li>
-<li><strong>B.S.</strong>, Electrical and Computer Engineering, Seoul National University · <em>2015 – 2020</em></li>
-</ul>
-<div style="height: 35vh">
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="QUklMkNBZ2VudHMlMkNMTE0lMkNQcm9kdWN0aXZpdHklMkNPcGVuQ2xhdw==" data-listing-date-sort="1771956000000" data-listing-file-modified-sort="1782966781339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1169">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/living-with-ai-assistant.html" class="no-external">Living with Otter, my personal AI assistant</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">Agents</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvZHVjdGl2aXR5'); return false;">Productivity</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3BlbkNsYXc='); return false;">OpenClaw</div>
 
 </div>
+<div class="delink listing-description"><a href="./posts/living-with-ai-assistant.html" class="no-external">
+Last summer, during my internship at Meta, I heard security people saying that fully autonomous AI agents were still some time away. The fundamental security issues had not…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/living-with-ai-assistant.html" class="no-external">
+<div class="listing-date">
+2026.02.25
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="R3JhZHVhdGUlMjBMaWZl" data-listing-date-sort="1738067257000" data-listing-file-modified-sort="1782966781337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="779">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/2024-review.html" class="no-external">Review of 2024</a>
+</h3>
+<div class="listing-categories">
 
+<div class="listing-category" onclick="window.quartoListingCategory('R3JhZHVhdGUlMjBMaWZl'); return false;">Graduate Life</div>
 
-</section>
+</div>
+<div class="delink listing-description"><a href="./posts/2024-review.html" class="no-external">
+January has flown by in a blink of an eye! While 2025 is already into its second month, it’s lunar new year today, so I decided to write a review of 2024.
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/2024-review.html" class="no-external">
+<div class="listing-date">
+2025.01.28
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="R3JhZHVhdGUlMjBMaWZl" data-listing-date-sort="1737977862000" data-listing-file-modified-sort="1782966781338" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="458">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/ccs24.html" class="no-external">ACM CCS 2024 Reflection</a>
+</h3>
+<div class="listing-categories">
 
-</main> <!-- /main -->
+<div class="listing-category" onclick="window.quartoListingCategory('R3JhZHVhdGUlMjBMaWZl'); return false;">Graduate Life</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/ccs24.html" class="no-external">
+This is a personal note for the ACM CCS 2024 I made after the event. CCS 2024 was held in Salt Lake City, Utah, USA. It was my second time attending CCS, but this time I had…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/ccs24.html" class="no-external">
+<div class="listing-date">
+2025.01.27
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="UmVzZWFyY2glMkNNVEUlMkNCbGFja0hhdA==" data-listing-date-sort="1723599943000" data-listing-file-modified-sort="1782966781338" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1656">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/bhusa24.html" class="no-external">Black Hat USA 2024</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TVRF'); return false;">MTE</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QmxhY2tIYXQ='); return false;">BlackHat</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/bhusa24.html" class="no-external">
+From August 5th to 12nd 2024, I attended Black Hat USA 2024 (and Defcon 32) in Las Vegas. I presented my research on Bypassing MTE with a side-channel attack. I returned to…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/bhusa24.html" class="no-external">
+<div class="listing-date">
+2024.08.14
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="R3JhZHVhdGUlMjBMaWZl" data-listing-date-sort="1704029871000" data-listing-file-modified-sort="1782966781337" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="690">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/2023-review.html" class="no-external">A review of 2023: Surprises, Triumphs, and Failures</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('R3JhZHVhdGUlMjBMaWZl'); return false;">Graduate Life</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/2023-review.html" class="no-external">
+It’s the end of 2023, and as I look back on the year, I can only say that it was a year full of research. I remember the days spent in front of the computer, reading papers…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/2023-review.html" class="no-external">
+<div class="listing-date">
+2023.12.31
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="R3JhZHVhdGUlMjBMaWZlJTJDUHJvZHVjdGl2aXR5" data-listing-date-sort="1692802800000" data-listing-file-modified-sort="1782966781340" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="400">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/series-productivity.html" class="no-external">Series: Graduate School Productivity - Introduction</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('R3JhZHVhdGUlMjBMaWZl'); return false;">Graduate Life</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvZHVjdGl2aXR5'); return false;">Productivity</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/series-productivity.html" class="no-external">
+Time flies in graduate school! Having spent 3.5 years as a PhD student, one thing I’ve learned is that I should be super-efficient in managing my time and energy.
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/series-productivity.html" class="no-external">
+<div class="listing-date">
+2023.08.24
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="UmVzZWFyY2glMkNIdWdnaW5nJTIwRmFjZQ==" data-listing-date-sort="1689692400000" data-listing-file-modified-sort="1782966781339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1062">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/hugging-evil-face.html" class="no-external">Hugging (Evil) Face: Security issues in Hugging Face</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SHVnZ2luZyUyMEZhY2U='); return false;">Hugging Face</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/hugging-evil-face.html" class="no-external">
+ ### Introduction In recent years, emerging technology in Machine Learning and Large Language Model (LLM) had led to the development of ML/LLM-powered applications. One of…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/hugging-evil-face.html" class="no-external">
+<div class="listing-date">
+2023.07.19
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="UmVzZWFyY2glMkNLZXJuZWwlMkNMTFZNJTJDUUVNVQ==" data-listing-date-sort="1688828400000" data-listing-file-modified-sort="1782966781339" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1192">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/linux-arm64-hardening.html" class="no-external">Security-hardening ARM64 Linux kernel</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UmVzZWFyY2g='); return false;">Research</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('S2VybmVs'); return false;">Kernel</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExWTQ=='); return false;">LLVM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UUVNVQ=='); return false;">QEMU</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/linux-arm64-hardening.html" class="no-external">
+In the first year of my Ph.D, I ambitiously began a research on protecting the Linux kernel against data-only attacks. My research especially focused on protecting…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/linux-arm64-hardening.html" class="no-external">
+<div class="listing-date">
+2023.07.09
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
