@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://juppytt.github.io/blog.html</loc>
-    <lastmod>2026-07-02T04:34:46.942Z</lastmod>
+    <lastmod>2026-07-05T23:59:44.980Z</lastmod>
   </url>
   <url>
-    <loc>https://juppytt.github.io/posts/linux-arm64-hardening.html</loc>
+    <loc>https://juppytt.github.io/posts/dualview-blog-part1.html</loc>
+    <lastmod>2026-07-07T06:31:05.836Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juppytt.github.io/posts/hugging-evil-face.html</loc>
     <lastmod>2026-07-02T04:33:01.339Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juppytt.github.io/posts/2023-review.html</loc>
-    <lastmod>2026-07-02T04:33:01.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juppytt.github.io/posts/2024-review.html</loc>
-    <lastmod>2026-07-02T04:33:01.337Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juppytt.github.io/posts/living-with-ai-assistant.html</loc>
-    <lastmod>2026-07-02T04:33:01.339Z</lastmod>
-  </url>
-  <url>
-    <loc>https://juppytt.github.io/posts/ccs24.html</loc>
-    <lastmod>2026-07-02T04:33:01.338Z</lastmod>
   </url>
   <url>
     <loc>https://juppytt.github.io/posts/bhusa24.html</loc>
     <lastmod>2026-07-02T04:33:01.338Z</lastmod>
   </url>
   <url>
-    <loc>https://juppytt.github.io/posts/hugging-evil-face.html</loc>
+    <loc>https://juppytt.github.io/posts/ccs24.html</loc>
+    <lastmod>2026-07-02T04:33:01.338Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juppytt.github.io/posts/living-with-ai-assistant.html</loc>
+    <lastmod>2026-07-02T04:33:01.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juppytt.github.io/posts/2024-review.html</loc>
+    <lastmod>2026-07-02T04:33:01.337Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juppytt.github.io/posts/2023-review.html</loc>
+    <lastmod>2026-07-02T04:33:01.337Z</lastmod>
+  </url>
+  <url>
+    <loc>https://juppytt.github.io/posts/linux-arm64-hardening.html</loc>
     <lastmod>2026-07-02T04:33:01.339Z</lastmod>
   </url>
   <url>
