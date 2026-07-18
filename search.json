@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "writing",
     "section": "",
-    "text": "DualView: A Safe View for the Agent, the Original View for Humans\n\n\n\nAgents\n\nSecurity\n\n\n\n\n\n\n\n\n\n2026.07.07\n\n\n\n\n\n\n\nLiving with Otter, my personal AI assistant\n\n\n\nAI\n\nAgents\n\nLLM\n\nProductivity\n\nOpenClaw\n\n\n\n\n\n\n\n\n\n2026.02.25\n\n\n\n\n\n\n\nReview of 2024\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2025.01.28\n\n\n\n\n\n\n\nACM CCS 2024 Reflection\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2025.01.27\n\n\n\n\n\n\n\nBlack Hat USA 2024\n\n\n\nResearch\n\nMTE\n\nBlackHat\n\n\n\n\n\n\n\n\n\n2024.08.14\n\n\n\n\n\n\n\nA review of 2023: Surprises, Triumphs, and Failures\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2023.12.31\n\n\n\n\n\n\n\nSeries: Graduate School Productivity - Introduction\n\n\n\nGraduate Life\n\nProductivity\n\n\n\n\n\n\n\n\n\n2023.08.24\n\n\n\n\n\n\n\nHugging (Evil) Face: Security issues in Hugging Face\n\n\n\nResearch\n\nHugging Face\n\n\n\n\n\n\n\n\n\n2023.07.19\n\n\n\n\n\n\n\nSecurity-hardening ARM64 Linux kernel\n\n\n\nResearch\n\nKernel\n\nLLVM\n\nQEMU\n\n\n\n\n\n\n\n\n\n2023.07.09\n\n\n\n\n\nNo matching items"
+    "text": "DualView: A Safe View for the Agent, the Original View for Humans\n\n\n\nAgents\n\nSecurity\n\n\n\n\n\n\n\n\n\n2026.07.07\n\n\n\n\n\n\n\nLiving with Otter, my personal AI assistant\n\n\n\nAI\n\nAgents\n\nLLM\n\nProductivity\n\nOpenClaw\n\n\n\n\n\n\n\n\n\n2026.02.24\n\n\n\n\n\n\n\nReview of 2024\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2025.01.28\n\n\n\n\n\n\n\nACM CCS 2024 Reflection\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2025.01.27\n\n\n\n\n\n\n\nBlack Hat USA 2024\n\n\n\nResearch\n\nMTE\n\nBlackHat\n\n\n\n\n\n\n\n\n\n2024.08.14\n\n\n\n\n\n\n\nA review of 2023: Surprises, Triumphs, and Failures\n\n\n\nGraduate Life\n\n\n\n\n\n\n\n\n\n2023.12.31\n\n\n\n\n\n\n\nSeries: Graduate School Productivity - Introduction\n\n\n\nGraduate Life\n\nProductivity\n\n\n\n\n\n\n\n\n\n2023.08.24\n\n\n\n\n\n\n\nHugging (Evil) Face: Security issues in Hugging Face\n\n\n\nResearch\n\nHugging Face\n\n\n\n\n\n\n\n\n\n2023.07.19\n\n\n\n\n\n\n\nSecurity-hardening ARM64 Linux kernel\n\n\n\nResearch\n\nKernel\n\nLLVM\n\nQEMU\n\n\n\n\n\n\n\n\n\n2023.07.09\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/dualview-blog-part1.html",
@@ -214,7 +214,7 @@
     "href": "index.html",
     "title": "Juhee Kim",
     "section": "",
-    "text": "I am a postdoctoral researcher at CompSec Lab, Department of Electrical and Computer Engineering, Seoul National University. I received my Ph.D. from the same research group, advised by Byoungyoung Lee.\nMy research background spans system security from high-level user programs to low-level operating systems and hardware, with a focus on identifying new attacks and designing practical defenses. I am currently working on securing LLM-based agent systems from a system security perspective."
+    "text": "I am a postdoctoral researcher at Azure Research, Microsoft, in Cambridge, UK. I received my Ph.D. from CompSec Lab, Department of Electrical and Computer Engineering, Seoul National University, advised by Byoungyoung Lee.\nMy research background spans system security from high-level user programs to low-level operating systems and hardware, with a focus on identifying new attacks and designing practical defenses. I am currently working on securing LLM-based agent systems from a system security perspective."
   },
   {
     "objectID": "index.html#publications",
@@ -235,7 +235,7 @@
     "href": "index.html#experience",
     "title": "Juhee Kim",
     "section": "Experience",
-    "text": "Experience\n\nPostdoctoral Researcher, CompSec Lab, Seoul National University · Mar 2026 – present\nSoftware Engineering Intern, Meta, London, UK · Jun 2025 – Sep 2025"
+    "text": "Experience\n\nPostdoctoral Researcher, Azure Research, Microsoft, Cambridge, UK · Jul 2026 – present\nPostdoctoral Researcher, CompSec Lab, Seoul National University · Mar 2026 – Jun 2026\nSoftware Engineering Intern, Meta, London, UK · Jun 2025 – Sep 2025"
   },
   {
     "objectID": "index.html#education",

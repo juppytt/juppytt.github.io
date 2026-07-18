@@ -10,7 +10,7 @@
 <atom:link href="https://juppytt.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Notes on security research and graduate life.</description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Mon, 06 Jul 2026 15:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 06 Jul 2026 23:00:00 GMT</lastBuildDate>
 <item>
   <title>DualView: A Safe View for the Agent, the Original View for Humans</title>
   <link>https://juppytt.github.io/posts/dualview-blog-part1.html</link>
@@ -309,7 +309,7 @@ Figure&nbsp;6: Security and utility results across defenses. Security is measure
   <category>Agents</category>
   <category>Security</category>
   <guid>https://juppytt.github.io/posts/dualview-blog-part1.html</guid>
-  <pubDate>Mon, 06 Jul 2026 15:00:00 GMT</pubDate>
+  <pubDate>Mon, 06 Jul 2026 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Living with Otter, my personal AI assistant</title>
@@ -716,7 +716,7 @@ we are heading towards something regardless of the nation boundaries.  -->
   <category>Graduate Life</category>
   <category>Productivity</category>
   <guid>https://juppytt.github.io/posts/series-productivity.html</guid>
-  <pubDate>Wed, 23 Aug 2023 15:00:00 GMT</pubDate>
+  <pubDate>Wed, 23 Aug 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Hugging (Evil) Face: Security issues in Hugging Face</title>
@@ -823,7 +823,7 @@ we are heading towards something regardless of the nation boundaries.  -->
   <category>Research</category>
   <category>Hugging Face</category>
   <guid>https://juppytt.github.io/posts/hugging-evil-face.html</guid>
-  <pubDate>Tue, 18 Jul 2023 15:00:00 GMT</pubDate>
+  <pubDate>Tue, 18 Jul 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Security-hardening ARM64 Linux kernel</title>
@@ -1365,7 +1365,7 @@ font-style: inherit;">*</span> /lib/modules/</span></code></pre></div></div>
   <category>LLVM</category>
   <category>QEMU</category>
   <guid>https://juppytt.github.io/posts/linux-arm64-hardening.html</guid>
-  <pubDate>Sat, 08 Jul 2023 15:00:00 GMT</pubDate>
+  <pubDate>Sat, 08 Jul 2023 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
